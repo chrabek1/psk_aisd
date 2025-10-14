@@ -12,8 +12,11 @@
 Radosław Kulig
 
 Kierunek: Inżynieria Danych
+
 Studia: stacjonarne
+
 Numer grupy: L02
+
 ***
 ## Wyznaczanie miejsca zerowego funkcji metodą bisekcji
 
@@ -34,7 +37,6 @@ double vel(float c) {
 	float g = 9.81, m = 68.1, t = 10;
 	double result;
 	result = g * m / c * (1 - exp(-(c / m) * t)) - 40;
-	//cout << result<<"\n";
 	return result;
 }
 
@@ -122,5 +124,6 @@ Podsumowując:
 - Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
 
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
+
 
 
