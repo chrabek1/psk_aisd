@@ -8,8 +8,7 @@
 ![](https://tu.kielce.pl/wp-content/uploads/2018/03/logo_psk.jpg)
 
 
-###### Przygotował:
-Radosław Kulig
+Przygotował: Radosław Kulig
 
 Kierunek: Inżynieria Danych
 
@@ -33,6 +32,7 @@ W przeciwnym razie punkt `MID` dzieli przedział `[XL,XR]` na dwie równe połow
 ![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/schemat_bisekcja.png?raw=true)
 ## Implementacja algorytmu bisekcji
 ```sh
+
 double vel(float c) {
 	float g = 9.81, m = 68.1, t = 10;
 	double result;
@@ -46,16 +46,17 @@ void bisekcja() {
 	double MID = (XL + XR) / 2;
 	double epsilon = 1;
 	cout << " | " << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " <<"\n";
-	cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
+	cout << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
 	while (epsilon > e) {
 		TEMP = MID;
 		if (vel(XL) * vel(MID) < 0) XR = MID; else XL = MID;
 		MID = (XL + XR) / 2;
 		epsilon = abs((MID - TEMP) / MID) * 100;
-		cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
+		cout << " | " << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n"
 	} 
 	cout << "\nWynik algorytmy metody bisekcji: " << MID << "\n";
 }
+
 ```
 
 ## Wyznaczanie miejsca zerowego funkcji metodą Newtona-Raphsona
@@ -91,7 +92,7 @@ void newtonRaphson() {
 		temp = x - f_new(x) / f_new_der(x);
 		x = temp;
 	} while (abs(f_new(x)) > e);
-	cout << "Wynik algorytmu metody Newtona-Raphsona: " << x;
+	cout << "\nWynik algorytmu metody Newtona-Raphsona: " << x;
 }
 ```
 
@@ -124,6 +125,7 @@ Podsumowując:
 - Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
 
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
+
 
 
 
