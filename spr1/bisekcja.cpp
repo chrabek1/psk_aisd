@@ -15,13 +15,13 @@ void newtonRaphson() {
 	double x = 5;
 	double temp;
 	double der = f_der(x);
-	cout << " | " << "x" << " | " << "f(x)"<< " | " << "\n";
+	cout << " | " << "x" << " | " << "|f(x)|"<< " | " << "\n";
 	cout << " | " << x << " | " << f(x) << " | " << "\n";
 	do {
 		temp = x - f(x) / der;
 		x = temp;
 		der=f_der(x);
-		cout << " | " << x << " | " << f(x) << " | " << "\n";
+		cout << " | " << x << " | " << abs(f(x)) << " | " << "\n";
 	} while (abs(f(x)) > e);
 	cout << "Wynik algorytmu metody Newtona-Raphsona: " << x << "\n";
 }
