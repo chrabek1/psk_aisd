@@ -45,16 +45,16 @@ void bisekcja() {
 	double TEMP = XL;
 	double MID = (XL + XR) / 2;
 	double epsilon = 1;
-	cout << ' | ' << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " <<"\n";
-	cout << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
+	cout << ' | ' << 'XL' << ' | ' << 'XR' << ' | ' << 'MID' << ' | ' << 'EPS' << ' | ' <<'\n';
+	cout << ' | '  << XL << ' | ' << XR << ' | ' << MID << ' | ' << epsilon  << ' | ' << '\n';
 	while (epsilon > e) {
 		TEMP = MID;
 		if (vel(XL) * vel(MID) < 0) XR = MID; else XL = MID;
 		MID = (XL + XR) / 2;
 		epsilon = abs((MID - TEMP) / MID) * 100;
-		cout << " | " << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n"
+		cout << ' | ' << XL << ' | ' << XR << ' | ' << MID << ' | ' << epsilon  << ' | ' << '\n'
 	} 
-	cout << "\nWynik algorytmy metody bisekcji: " << MID << "\n";
+	cout << '\nWynik algorytmy metody bisekcji: ' << MID << '\n';
 }
 
 ```
@@ -92,7 +92,7 @@ void newtonRaphson() {
 		temp = x - f(x) / f_der(x);
 		x = temp;
 	} while (abs(f(x)) > e);
-	cout << "\nWynik algorytmu metody Newtona-Raphsona: " << x;
+	cout << '\nWynik algorytmu metody Newtona-Raphsona: ' << x;
 }
 ```
 
@@ -125,6 +125,7 @@ Podsumowując:
 - Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
 
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
+
 
 
 
