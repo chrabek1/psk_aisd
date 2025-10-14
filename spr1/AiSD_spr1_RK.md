@@ -14,6 +14,7 @@ Radosław Kulig
 Kierunek: Inżynieria Danych
 Studia: stacjonarne
 Numer grupy: L02
+***
 ## Wyznaczanie miejsca zerowego funkcji metodą bisekcji
 
 Metoda bisekcji ( ang. bisection method ), zwana również metodą połowienia lub wyszukiwaniem binarnym pozwala stosunkowo szybko znaleźć pierwiastek dowolnej funkcji w zadanym przedziale poszukiwań `[a,b]`. Aby można było zastosować metodę bisekcji, funkcja musi spełniać kilka warunków początkowych:
@@ -57,7 +58,11 @@ void bisekcja() {
 
 ## Wyznaczanie miejsca zerowego funkcji metodą Newtona-Raphsona
 
-Metoda Newtona (zwana również metodą Newtona-Raphsona lub metodą stycznych) – algorytm iteracyjny prowadzący do wyznaczenia przybliżonej wartości miejsca zerowego funkcji jednej zmiennej lub wielu zmiennych. 
+Metoda Newtona-Raphsona, nazywana również metodą stycznych, jest jedną z najczęściej stosowanych metod numerycznych do wyznaczania miejsc zerowych funkcji. Polega ona na iteracyjnym przybliżaniu pierwiastka poprzez wykorzystanie wartości funkcji oraz jej pochodnej w danym punkcie. W każdym kroku obliczane jest nowe przybliżenie zgodnie ze wzorem:
+
+xn+1=xn−f(xn)f′(xn)
+
+
 Założenia:
 
 - W przedziale `[a,b]` znajduje się dokładnie jeden pierwiastek funkcji _`f`_.
@@ -115,4 +120,6 @@ Podsumowując:
 
 - Metoda bisekcji zapewnia pewność zbieżności, lecz jest wolniejsza.
 - Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
+
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
+
