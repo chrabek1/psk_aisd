@@ -125,10 +125,3 @@ Podsumowując:
 - Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
 
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
-
-
-
-
-
-
-
