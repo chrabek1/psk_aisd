@@ -117,7 +117,7 @@ void newtonRaphson() {
  | 14.7969 | 14.8125 | 14.8047 | 0.0527704 | 
  
 ##### Wynik algorytmy metody bisekcji: `14.8047`.
-###Algorytm Newtona-Raphsona
+### Algorytm Newtona-Raphsona
  | x | f(x) | 
  | ------ | ------ |
  | 5 | -4.99326 | 
@@ -140,4 +140,5 @@ Podsumowując:
 - Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
 
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
+
 
