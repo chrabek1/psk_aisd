@@ -38,23 +38,24 @@ double vel(float c) {
 	double result;
 	result = g * m / c * (1 - exp(-(c / m) * t)) - 40;
 	return result;
-}
 
+}
 void bisekcja() {
 	double XL = 12, XR = 16, e = 0.1;
 	double TEMP = XL;
 	double MID = (XL + XR) / 2;
 	double epsilon = 1;
-	cout << ' | ' << 'XL' << ' | ' << 'XR' << ' | ' << 'MID' << ' | ' << 'EPS' << ' | ' <<'\n';
-	cout << ' | '  << XL << ' | ' << XR << ' | ' << MID << ' | ' << epsilon  << ' | ' << '\n';
+	cout << " | " << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " <<"\n";
+	cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
 	while (epsilon > e) {
+		
 		TEMP = MID;
 		if (vel(XL) * vel(MID) < 0) XR = MID; else XL = MID;
 		MID = (XL + XR) / 2;
 		epsilon = abs((MID - TEMP) / MID) * 100;
-		cout << ' | ' << XL << ' | ' << XR << ' | ' << MID << ' | ' << epsilon  << ' | ' << '\n'
+		cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
 	} 
-	cout << '\nWynik algorytmy metody bisekcji: ' << MID << '\n';
+	cout << "Wynik algorytmy metody bisekcji: " << MID << "\n\n";
 }
 
 ```
@@ -85,18 +86,24 @@ double f_der(double x) {
 	return -exp(-x) - 1;
 }
 void newtonRaphson() {
-	float e = 0.0001;
-	float x = 5;
+	double e = 0.0001;
+	double x = 5;
 	double temp;
+	double der = f_der(x);
+	cout << " | " << "x" << " | " << "f(x)"<< " | " << "\n";
+	cout << " | " << x << " | " << f(x) << " | " << "\n";
 	do {
-		temp = x - f(x) / f_der(x);
+		temp = x - f(x) / der;
 		x = temp;
+		der=f_der(x);
+		cout << " | " << x << " | " << f(x) << " | " << "\n";
 	} while (abs(f(x)) > e);
-	cout << '\nWynik algorytmu metody Newtona-Raphsona: ' << x;
+	cout << "Wynik algorytmu metody Newtona-Raphsona: " << x << "\n";
 }
 ```
 
 ## Wyniki 
+### Algorytm bisekcji
  | XL | XR | MID | EPS | 
  | ------ | ------ | ------ | ------ |
  | 12 | 16 | 14 | 1 | 
@@ -110,6 +117,14 @@ void newtonRaphson() {
  | 14.7969 | 14.8125 | 14.8047 | 0.0527704 | 
  
 ##### Wynik algorytmy metody bisekcji: `14.8047`.
+###Algorytm Newtona-Raphsona
+ | x | f(x) | 
+ | ------ | ------ |
+ | 5 | -4.99326 | 
+ | 0.0401571 | 0.920481 | 
+ | 0.509638 | 0.0910757 | 
+ | 0.566535 | 0.000954137 | 
+ | 0.567143 | 1.3882e-07 | 
 ##### Wynik algorytmu metody Newtona-Raphsona: `0.567143`.
 &nbsp;
 ## Wnioski
@@ -125,3 +140,4 @@ Podsumowując:
 - Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
 
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
+
