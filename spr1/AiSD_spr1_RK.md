@@ -78,10 +78,10 @@ Metoda Newtona-Raphsona jest metodą o zbieżności kwadratowej – rząd zbież
 ## Implementacja algorytmu metody Newtona-Raphsona
 
 ```sh
-double f_new(double x) {
+double f(double x) {
 	return exp(-x) - x;
 }
-double f_new_der(double x) {
+double f_der(double x) {
 	return -exp(-x) - 1;
 }
 void newtonRaphson() {
@@ -89,9 +89,9 @@ void newtonRaphson() {
 	float x = 5;
 	double temp;
 	do {
-		temp = x - f_new(x) / f_new_der(x);
+		temp = x - f(x) / f_der(x);
 		x = temp;
-	} while (abs(f_new(x)) > e);
+	} while (abs(f(x)) > e);
 	cout << "\nWynik algorytmu metody Newtona-Raphsona: " << x;
 }
 ```
@@ -125,6 +125,7 @@ Podsumowując:
 - Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
 
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
+
 
 
 
