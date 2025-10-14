@@ -4,29 +4,34 @@
 #include <iomanip>
 using namespace std;
 
+double f(double x) {
+	return exp(-x) - x;
+}
+double f_der(double x) {
+	return -exp(-x) - 1;
+}
+void newtonRaphson() {
+	double e = 0.0001;
+	double x = 5;
+	double temp;
+	double der = f_der(x);
+	cout << " | " << "x" << " | " << "f(x)"<< " | " << "\n";
+	cout << " | " << x << " | " << f(x) << " | " << "\n";
+	do {
+		temp = x - f(x) / der;
+		x = temp;
+		der=f_der(x);
+		cout << " | " << x << " | " << f(x) << " | " << "\n";
+	} while (abs(f(x)) > e);
+	cout << "Wynik algorytmu metody Newtona-Raphsona: " << x << "\n";
+}
+
 double vel(float c) {
 	float g = 9.81, m = 68.1, t = 10;
 	double result;
 	result = g * m / c * (1 - exp(-(c / m) * t)) - 40;
-	//cout << result<<"\n";
 	return result;
 
-}
-double f_new(double x) {
-	return exp(-x) - x;
-}
-double f_new_der(double x) {
-	return -exp(-x) - 1;
-}
-void newtonRaphson() {
-	float e = 0.0001;
-	float x = 5;
-	double temp;
-	do {
-		temp = x - f_new(x) / f_new_der(x);
-		x = temp;
-	} while (abs(f_new(x)) > e);
-	cout << "Wynik algorytmu metody Newtona-Raphsona: " << x;
 }
 void bisekcja() {
 	double XL = 12, XR = 16, e = 0.1;
@@ -43,7 +48,7 @@ void bisekcja() {
 		epsilon = abs((MID - TEMP) / MID) * 100;
 		cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
 	} 
-	cout << "\nWynik algorytmy metody bisekcji: " << MID << "\n";
+	cout << "Wynik algorytmy metody bisekcji: " << MID << "\n\n";
 }
 
 int main(int argc, char** argv) {
