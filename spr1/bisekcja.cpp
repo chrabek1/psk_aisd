@@ -1,6 +1,6 @@
 #include <iostream>
 #include <ctime>
-//#include <unistd.h>
+#include <unistd.h>
 #include <iomanip>
 using namespace std;
 
@@ -25,27 +25,29 @@ void newtonRaphson() {
 	do {
 		temp = x - f_new(x) / f_new_der(x);
 		x = temp;
-	} while (abs(f_new(x)) < e);
-	cout << "Wynik Newtona-Raphsona " << x;
+	} while (abs(f_new(x)) > e);
+	cout << "Wynik algorytmu metody Newtona-Raphsona: " << x;
 }
 void bisekcja() {
 	double XL = 12, XR = 16, e = 0.1;
 	double TEMP = XL;
 	double MID = (XL + XR) / 2;
-	double epsilon = 0;
-	cout << "XL" << "\t" << "XR" << "\t" << "MID" << "\t" << "EPS" << "\n";
-	do {
-		cout << XL << "\t" << XR << "\t" << MID << "\t" << epsilon << "\n";
+	double epsilon = 1;
+	cout << " | " << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " <<"\n";
+	cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
+	while (epsilon > e) {
+		
 		TEMP = MID;
 		if (vel(XL) * vel(MID) < 0) XR = MID; else XL = MID;
 		MID = (XL + XR) / 2;
 		epsilon = abs((MID - TEMP) / MID) * 100;
-	} while (epsilon < e);
-	cout << "\nWYNIK" << MID;
+		cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
+	} 
+	cout << "\nWynik algorytmy metody bisekcji: " << MID << "\n";
 }
 
 int main(int argc, char** argv) {
-	//bisekcja();
+	bisekcja();
 	newtonRaphson();
 
 };
