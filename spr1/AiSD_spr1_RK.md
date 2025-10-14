@@ -45,7 +45,7 @@ void bisekcja() {
 	double TEMP = XL;
 	double MID = (XL + XR) / 2;
 	double epsilon = 1;
-	cout << " | " << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " <<"\n";
+	cout << ' | ' << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " <<"\n";
 	cout << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
 	while (epsilon > e) {
 		TEMP = MID;
@@ -125,6 +125,7 @@ Podsumowując:
 - Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
 
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
+
 
 
 
