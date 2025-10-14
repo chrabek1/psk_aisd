@@ -60,7 +60,7 @@ void bisekcja() {
 
 Metoda Newtona-Raphsona, nazywana również metodą stycznych, jest jedną z najczęściej stosowanych metod numerycznych do wyznaczania miejsc zerowych funkcji. Polega ona na iteracyjnym przybliżaniu pierwiastka poprzez wykorzystanie wartości funkcji oraz jej pochodnej w danym punkcie. W każdym kroku obliczane jest nowe przybliżenie zgodnie ze wzorem:
 
-xn+1=xn−f(xn)f′(xn)
+![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/newton_wzor.png?raw=true)
 
 
 Założenia:
@@ -122,4 +122,5 @@ Podsumowując:
 - Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
 
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
+
 
