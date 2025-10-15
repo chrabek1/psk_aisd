@@ -134,11 +134,11 @@ Wielkości wartości ε na wykresie powyżej są zależne od zadanych parametró
 
 W przeprowadzonych ćwiczeniach zaimplementowano i porównano dwie metody numeryczne służące do wyznaczania miejsc zerowych funkcji: metodę bisekcji oraz metodę Newtona-Raphsona. Obie metody pozwalają skutecznie znaleźć przybliżone rozwiązanie równania nieliniowego, jednak różnią się zasadą działania, szybkością zbieżności oraz wymaganiami wobec funkcji.
 
-Metoda bisekcji okazała się prosta w implementacji i bardzo stabilna, ponieważ zawsze prowadzi do rozwiązania, o ile funkcja spełnia warunki ciągłości i zmiany znaku na krańcach przedziału. Jej główną wadą jest stosunkowo wolna zbieżność liniowa(co widać na wykresie), co sprawia, że do osiągnięcia wysokiej dokładności wymagane jest wiele iteracji.
+Metoda bisekcji charakteryzuje się dużą stabilnością i gwarancją zbieżności, pod warunkiem spełnienia założeń dotyczących ciągłości funkcji oraz zmiany znaku na krańcach przedziału. Jej główną wadą jest jednak wolne, liniowe tempo zbieżności, co powoduje konieczność wykonania większej liczby iteracji w celu osiągnięcia wymaganej dokładności.
 
-Z kolei metoda Newtona-Raphsona cechuje się zbieżnością kwadratową, co oznacza, że przy spełnionych założeniach (ciągłość funkcji oraz dostępność jej pochodnej) osiąga rozwiązanie znacznie szybciej(co widać na wykresie) niż metoda bisekcji. Wadą jest jednak to, że metoda może nie zbiegać, jeśli punkt startowy zostanie dobrany niewłaściwie lub jeśli funkcja nie spełnia warunków gładkości.
-Podsumowując:
+Z kolei metoda Newtona-Raphsona, wykorzystująca wartości funkcji oraz jej pochodnej, cechuje się znacznie szybszym — kwadratowym — tempem zbieżności. Wymaga jednak odpowiedniego doboru punktu początkowego oraz znajomości pochodnej, gdyż w przeciwnym razie może nie zapewniać zbieżności rozwiązania.
 
-- Metoda bisekcji zapewnia pewność zbieżności, lecz jest wolniejsza.
-- Metoda Newtona-Raphsona jest szybsza, ale wymaga znajomości funkcji pochodnej.
-- W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
+Analiza wykresu potwierdza teoretyczne właściwości obu metod. Linie przedstawiające przebieg zbieżności ukazują, że w przypadku metody bisekcji tempo zbieżności jest liniowe, natomiast dla metody Newtona-Raphsona — kwadratowe, co przekłada się na znacznie szybsze osiąganie dokładnego rozwiązania.
+
+Podsumowując, metoda bisekcji gwarantuje stabilność kosztem szybkości, natomiast metoda Newtona-Raphsona zapewnia większą efektywność obliczeniową przy spełnieniu bardziej restrykcyjnych warunków. Wybór odpowiedniej metody powinien zatem zależeć od charakteru analizowanej funkcji oraz oczekiwanej dokładności obliczeń.
+
