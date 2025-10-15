@@ -39,7 +39,7 @@ void bisekcja() {
 	double MID = (XL + XR) / 2;
 	double epsilon = 1;
 	cout << " | " << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " <<"\n";
-	cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
+	cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << "---"  << " | " << "\n";
 	while (epsilon > e) {
 		
 		TEMP = MID;
