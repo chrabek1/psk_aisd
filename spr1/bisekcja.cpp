@@ -12,11 +12,11 @@ double f_der(double x) {
 }
 void newtonRaphson() {
 	double e = 0.0001;
-	double x = 5;
+	double x = 10;
 	double temp;
 	double der = f_der(x);
 	cout << " | " << "x" << " | " << "|f(x)|"<< " | " << "\n";
-	cout << " | " << x << " | " << f(x) << " | " << "\n";
+	cout << " | " << x << " | " << abs(f(x)) << " | " << "\n";
 	do {
 		temp = x - f(x) / der;
 		x = temp;
