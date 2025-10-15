@@ -65,14 +65,13 @@ Metoda Newtona-Raphsona, nazywana również metodą stycznych, jest jedną z naj
 
 ![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/newton_wzor.png?raw=true)
 
+Proces ten powtarza się aż do osiągnięcia zadanej dokładności rozwiązania. Metoda Newtona-Raphsona charakteryzuje się zbieżnością kwadratową w pobliżu pierwiastka, co oznacza, że liczba poprawnych cyfr przybliżenia rośnie w przybliżeniu dwukrotnie z każdą iteracją. Warunkiem jej skuteczności jest jednak istnienie i niezerowość pochodnej `f′(x)` w otoczeniu pierwiastka oraz odpowiedni wybór punktu startowego `x0`, ponieważ nieodpowiednie wartości początkowe mogą prowadzić do rozbieżności iteracji.
 
 Założenia:
 
 - W przedziale `[a,b]` znajduje się dokładnie jeden pierwiastek funkcji `f`.
 - Funkcja ma różne znaki na krańcach przedziału, tj. `f(a) ⋅ f( b) < 0`.
 - Pierwsza i druga pochodna funkcji mają stały znak w tym przedziale.
-
-Metoda Newtona-Raphsona jest metodą o zbieżności kwadratowej – rząd zbieżności wynosi `2` (wyjątkiem są zera wielokrotne, dla których zbieżność jest liniowa i wynosi `1`), zaś współczynnik zbieżności `M/2m`. Oznacza to, iż przy spełnionych założeniach błąd maleje kwadratowo wraz z ilością iteracji. 
 
 ![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/Methode_Newton.svg.png?raw=true)
 ## Implementacja algorytmu metody Newtona-Raphsona
@@ -141,4 +140,5 @@ Z kolei metoda Newtona-Raphsona, wykorzystująca wartości funkcji oraz jej poch
 Analiza wykresu potwierdza teoretyczne właściwości obu metod. Linie przedstawiające przebieg zbieżności ukazują, że w przypadku metody bisekcji tempo zbieżności jest liniowe, natomiast dla metody Newtona-Raphsona — kwadratowe, co przekłada się na znacznie szybsze osiąganie dokładnego rozwiązania.
 
 Podsumowując, metoda bisekcji gwarantuje stabilność kosztem szybkości, natomiast metoda Newtona-Raphsona zapewnia większą efektywność obliczeniową przy spełnieniu bardziej restrykcyjnych warunków. Wybór odpowiedniej metody powinien zatem zależeć od charakteru analizowanej funkcji oraz oczekiwanej dokładności obliczeń.
+
 
