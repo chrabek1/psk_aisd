@@ -9,6 +9,8 @@
 
 Przygotował: Radosław Kulig
 
+Numer albumu: 093795
+
 Kierunek: Inżynieria Danych
 
 Studia: stacjonarne
@@ -140,5 +142,6 @@ Z kolei metoda Newtona-Raphsona, wykorzystująca wartości funkcji oraz jej poch
 Analiza wykresu potwierdza teoretyczne właściwości obu metod. Linie przedstawiające przebieg zbieżności ukazują, że w przypadku metody bisekcji tempo zbieżności jest liniowe, natomiast dla metody Newtona-Raphsona — kwadratowe, co przekłada się na znacznie szybsze osiąganie dokładnego rozwiązania.
 
 Podsumowując, metoda bisekcji gwarantuje stabilność kosztem szybkości, natomiast metoda Newtona-Raphsona zapewnia większą efektywność obliczeniową przy spełnieniu bardziej restrykcyjnych warunków. Wybór odpowiedniej metody powinien zatem zależeć od charakteru analizowanej funkcji oraz oczekiwanej dokładności obliczeń.
+
 
 
