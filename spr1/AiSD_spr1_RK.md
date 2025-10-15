@@ -113,6 +113,7 @@ void newtonRaphson() {
  | 14.75 | 14.8125 | 14.7812 | 0.211416 | 
  | 14.7812 | 14.8125 | 14.7969 | 0.105597 | 
  | 14.7969 | 14.8125 | 14.8047 | 0.0527704 | 
+ 
 ##### Wynik algorytmy metody bisekcji: `14.8047`.
 
 ### Algorytm Newtona-Raphsona
@@ -124,6 +125,7 @@ void newtonRaphson() {
  | 0.500125 | 0.10633 | 
  | 0.566314 | 0.00129962 | 
  | 0.567143 | 1.9501e-07 | 
+ 
 ##### Wynik algorytmu metody Newtona-Raphsona: `0.567143`.
 
 ## Wykres
@@ -142,4 +144,5 @@ Z kolei metoda Newtona-Raphsona, wykorzystująca wartości funkcji oraz jej poch
 
 Analiza wykresu potwierdza teoretyczne właściwości obu metod. Linie przedstawiające przebieg zbieżności ukazują, że w przypadku metody bisekcji tempo zbieżności jest liniowe, natomiast dla metody Newtona-Raphsona — kwadratowe, co przekłada się na znacznie szybsze osiąganie dokładnego rozwiązania.
 Podsumowując, metoda bisekcji gwarantuje stabilność kosztem szybkości, natomiast metoda Newtona-Raphsona zapewnia większą efektywność obliczeniową przy spełnieniu bardziej restrykcyjnych warunków. Wybór odpowiedniej metody powinien zatem zależeć od charakteru analizowanej funkcji oraz oczekiwanej dokładności obliczeń.
+
 
