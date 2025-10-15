@@ -1,6 +1,5 @@
 # Politechnika Świętokrzyska w Kielcach
 ## Wydział Zarządzania i Modelowania Komputerowego
-&nbsp;
 ##### Algorytmy i struktury danych
 ##### Laboratorium
 ##### Algorytmy numeryczne
@@ -31,7 +30,7 @@ W przeciwnym razie punkt `MID` dzieli przedział `[XL,XR]` na dwie równe połow
 
 ![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/schemat_bisekcja.png?raw=true)
 ## Implementacja algorytmu bisekcji
-```sh
+```cpp
 
 double vel(float c) {
 	float g = 9.81, m = 68.1, t = 10;
@@ -46,7 +45,7 @@ void bisekcja() {
 	double MID = (XL + XR) / 2;
 	double epsilon = 1;
 	cout << " | " << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " <<"\n";
-	cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
+	cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << "---"  << " | " << "\n";
 	while (epsilon > e) {
 		
 		TEMP = MID;
@@ -69,7 +68,7 @@ Metoda Newtona-Raphsona, nazywana również metodą stycznych, jest jedną z naj
 
 Założenia:
 
-- W przedziale `[a,b]` znajduje się dokładnie jeden pierwiastek funkcji _`f`_.
+- W przedziale `[a,b]` znajduje się dokładnie jeden pierwiastek funkcji `f`.
 - Funkcja ma różne znaki na krańcach przedziału, tj. `f(a) ⋅ f( b) < 0`.
 - Pierwsza i druga pochodna funkcji mają stały znak w tym przedziale.
 
@@ -78,7 +77,7 @@ Metoda Newtona-Raphsona jest metodą o zbieżności kwadratowej – rząd zbież
 ![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/Methode_Newton.svg.png?raw=true)
 ## Implementacja algorytmu metody Newtona-Raphsona
 
-```sh
+```cpp
 double f(double x) {
 	return exp(-x) - x;
 }
@@ -87,16 +86,16 @@ double f_der(double x) {
 }
 void newtonRaphson() {
 	double e = 0.0001;
-	double x = 5;
+	double x = 10;
 	double temp;
 	double der = f_der(x);
-	cout << " | " << "x" << " | " << "f(x)"<< " | " << "\n";
-	cout << " | " << x << " | " << f(x) << " | " << "\n";
+	cout << " | " << "x" << " | " << "abs(f(x))"<< " | " << "\n";
+	cout << " | " << x << " | " << abs(f(x)) << " | " << "\n";
 	do {
 		temp = x - f(x) / der;
 		x = temp;
 		der=f_der(x);
-		cout << " | " << x << " | " << f(x) << " | " << "\n";
+		cout << " | " << x << " | " << abs(f(x)) << " | " << "\n";
 	} while (abs(f(x)) > e);
 	cout << "Wynik algorytmu metody Newtona-Raphsona: " << x << "\n";
 }
@@ -106,7 +105,7 @@ void newtonRaphson() {
 ### Algorytm bisekcji
  | XL | XR | MID | EPS | 
  | ------ | ------ | ------ | ------ |
- | 12 | 16 | 14 | 1 | 
+ | 12 | 16 | 14 | --- | 
  | 14 | 16 | 15 | 6.66667 | 
  | 14 | 15 | 14.5 | 3.44828 | 
  | 14.5 | 15 | 14.75 | 1.69492 | 
@@ -120,26 +119,26 @@ void newtonRaphson() {
 ### Algorytm Newtona-Raphsona
  | x | \|f(x)\| | 
  | ------ | ------ |
- | 5 | 4.99326 | 
- | 0.0401571 | 0.920481 | 
- | 0.509638 | 0.0910757 | 
- | 0.566535 | 0.000954137 | 
- | 0.567143 | 1.3882e-07 | 
+ | 10 | 9.99995 | 
+ | 0.000499377 | 0.999001 | 
+ | 0.500125 | 0.10633 | 
+ | 0.566314 | 0.00129962 | 
+ | 0.567143 | 1.9501e-07 | 
 ##### Wynik algorytmu metody Newtona-Raphsona: `0.567143`.
 &nbsp;
+## Wykres
+![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/wykres.png?raw=true)
+
+Wielkości wartości ε na wykresie powyżej są zależne od zadanych parametrów - przedziału `[XL,XL]` w metodzie bisekcji i wartości `x` w metodzie Newtona-Raphsona. Z punktu widzenia naszego ćwiczenia istotny jest jedynie kształt linii na wykresie, który odzwierciedla tempa zbieżności porównywanych metod.
 ## Wnioski
 
 W przeprowadzonych ćwiczeniach zaimplementowano i porównano dwie metody numeryczne służące do wyznaczania miejsc zerowych funkcji: metodę bisekcji oraz metodę Newtona-Raphsona. Obie metody pozwalają skutecznie znaleźć przybliżone rozwiązanie równania nieliniowego, jednak różnią się zasadą działania, szybkością zbieżności oraz wymaganiami wobec funkcji.
 
-Metoda bisekcji okazała się prosta w implementacji i bardzo stabilna, ponieważ zawsze prowadzi do rozwiązania, o ile funkcja spełnia warunki ciągłości i zmiany znaku na krańcach przedziału. Jej główną wadą jest stosunkowo wolna zbieżność liniowa, co sprawia, że do osiągnięcia wysokiej dokładności wymagane jest wiele iteracji.
+Metoda bisekcji okazała się prosta w implementacji i bardzo stabilna, ponieważ zawsze prowadzi do rozwiązania, o ile funkcja spełnia warunki ciągłości i zmiany znaku na krańcach przedziału. Jej główną wadą jest stosunkowo wolna zbieżność liniowa(co widać na wykresie), co sprawia, że do osiągnięcia wysokiej dokładności wymagane jest wiele iteracji.
 
-Z kolei metoda Newtona-Raphsona cechuje się zbieżnością kwadratową, co oznacza, że przy spełnionych założeniach (ciągłość funkcji oraz dostępność jej pochodnej) osiąga rozwiązanie znacznie szybciej niż metoda bisekcji. Wadą jest jednak to, że metoda może nie zbiegać, jeśli punkt startowy zostanie dobrany niewłaściwie lub jeśli funkcja nie spełnia warunków gładkości.
+Z kolei metoda Newtona-Raphsona cechuje się zbieżnością kwadratową, co oznacza, że przy spełnionych założeniach (ciągłość funkcji oraz dostępność jej pochodnej) osiąga rozwiązanie znacznie szybciej(co widać na wykresie) niż metoda bisekcji. Wadą jest jednak to, że metoda może nie zbiegać, jeśli punkt startowy zostanie dobrany niewłaściwie lub jeśli funkcja nie spełnia warunków gładkości.
 Podsumowując:
 
 - Metoda bisekcji zapewnia pewność zbieżności, lecz jest wolniejsza.
-- Metoda Newtona-Raphsona jest szybsza, ale wymaga dobrej znajomości funkcji i jej pochodnej.
-
+- Metoda Newtona-Raphsona jest szybsza, ale wymaga znajomości funkcji pochodnej.
 - W praktyce wybór metody zależy od charakteru funkcji oraz wymaganej dokładności obliczeń.
-
-
-
