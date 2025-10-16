@@ -1,9 +1,4 @@
-
-
 #include <iostream>
-#include <ctime>
-//#include <unistd.h>
-#include <iomanip>
 using namespace std;
  
 double vel(double c) {
