@@ -123,6 +123,7 @@ void newtonRaphson() {
 ### Algorytm Newtona-Raphsona
 
  | x | \|vel(x)\| | 
+ | ------ | ------ |
  | 10 | 11.4215 | 
  | 11.7097 | 6.83073 | 
  | 13.1116 | 3.52177 | 
