@@ -38,21 +38,21 @@ double vel(float c) {
 	return result;
 }
 void bisekcja() {
-	double XL = 12, XR = 16, e = 0.1;
-	double TEMP = XL;
-	double MID = (XL + XR) / 2;
-	double epsilon = 1;
-	cout << " | " << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " <<"\n";
-	cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << "---"  << " | " << "\n";
-	while (epsilon > e) {
-		
-		TEMP = MID;
-		if (vel(XL) * vel(MID) < 0) XR = MID; else XL = MID;
-		MID = (XL + XR) / 2;
-		epsilon = abs((MID - TEMP) / MID) * 100;
-		cout  << " | "  << XL << " | " << XR << " | " << MID << " | " << epsilon  << " | " << "\n";
-	} 
-	cout << "Wynik algorytmy metody bisekcji: " << MID << "\n\n";
+    double XL = 12, XR = 16, e = 0.1;
+    double TEMP = XL;
+    double MID = (XL + XR) / 2;
+    double epsilon = 1;
+    cout << " | " << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " << "\n";
+    cout << " | " << XL << " | " << XR << " | " << MID << " | " << "---" << " | " << "\n";
+    while (epsilon > e) {
+ 
+        TEMP = MID;
+        if (vel(XL) * vel(MID) < 0) XR = MID; else XL = MID;
+        MID = (XL + XR) / 2;
+        epsilon = abs((MID - TEMP) / MID) * 100;
+        cout << " | " << XL << " | " << XR << " | " << MID << " | " << epsilon << " | " << "\n";
+    }
+    cout << "Wynik algorytmy metody bisekcji: " << MID << "\n\n";
 }
 ```
 
@@ -75,26 +75,24 @@ Założenia:
 ## Implementacja algorytmu metody Newtona-Raphsona
 
 ```cpp
-double f(double x) {
-	return exp(-x) - x;
-}
-double f_der(double x) {
-	return -exp(-x) - 1;
+double vel_der(double x) {
+    double result = exp(-0.146843 * x) * (4.16764 * pow(10, -16) * x - 668.061 * exp(0.146843 * x) + 2.83816 * pow(10, -15)) / pow(x, 2);
+    return result;
 }
 void newtonRaphson() {
-	double e = 0.0001;
-	double x = 10;
-	double temp;
-	double der = f_der(x);
-	cout << " | " << "x" << " | " << "abs(f(x))"<< " | " << "\n";
-	cout << " | " << x << " | " << abs(f(x)) << " | " << "\n";
-	do {
-		temp = x - f(x) / der;
-		x = temp;
-		der=f_der(x);
-		cout << " | " << x << " | " << abs(f(x)) << " | " << "\n";
-	} while (abs(f(x)) > e);
-	cout << "Wynik algorytmu metody Newtona-Raphsona: " << x << "\n";
+    double e = 0.01;
+    double x = 10;
+    double temp;
+    double der = vel_der(x);
+    cout << " | " << "x" << " | " << "|vel(x)|" << " | " << "\n";
+    cout << " | " << x << " | " << abs(vel(x)) << " | " << "\n";
+    do {
+        temp = x - vel(x) / der;
+        x = temp;
+        der = vel_der(x);
+        cout << " | " << x << " | " << abs(vel(x)) << " | " << "\n";
+    } while (abs(vel(x)) > e);
+    cout << "Wynik algorytmu metody Newtona-Raphsona: " << x << "\n";
 }
 ```
 
@@ -118,15 +116,19 @@ void newtonRaphson() {
 
 ### Algorytm Newtona-Raphsona
 
- | x | \|f(x)\| | 
- | ------ | ------ |
- | 10 | 9.99995 | 
- | 0.000499377 | 0.999001 | 
- | 0.500125 | 0.10633 | 
- | 0.566314 | 0.00129962 | 
- | 0.567143 | 1.9501e-07 | 
- 
-##### Wynik algorytmu metody Newtona-Raphsona: `0.567143`.
+ | x | \|vel(x)\| | 
+ | 10 | 11.4215 | 
+ | 11.7097 | 6.83073 | 
+ | 13.1116 | 3.52177 | 
+ | 14.0179 | 1.57401 | 
+ | 14.4809 | 0.631897 | 
+ | 14.6792 | 0.23869 | 
+ | 14.7562 | 0.0877069 | 
+ | 14.7848 | 0.0318761 | 
+ | 14.7952 | 0.0115374 | 
+ | 14.799 | 0.00416963 | 
+
+##### Wynik algorytmu metody Newtona-Raphsona: `14.799`.
 
 ## Wykres
 
