@@ -11,7 +11,6 @@ double vel(double c) {
     double result;
     result = g * m / c * (1 - exp(-(c / m) * t)) - 40;
     return result;
- 
 }
 double vel_der(double x) {
     double result = exp(-0.146843 * x) * (4.16764 * pow(10, -16) * x - 668.061 * exp(0.146843 * x) + 2.83816 * pow(10, -15)) / pow(x, 2);
