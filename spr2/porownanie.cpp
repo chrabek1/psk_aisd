@@ -7,7 +7,7 @@
 #include <fstream>
 using namespace std;
 
-const long n=999999;
+const long n=99999;
 void tab_init() {
     clock_t start,end;
     double time_taken;
@@ -41,11 +41,11 @@ void podstawa_stos(int n,int  b) {
         n=n/b;
     } 
     while(!stos.empty()) {
-        cout<<stos.top()<<"_";
+        cout<<stos.top()<<"-";
         stos.pop();
     }
-
 }
+
 void podstawa_lista(int n, int b) {
     list<int> lista;
     while(n!=0) {
@@ -53,7 +53,7 @@ void podstawa_lista(int n, int b) {
         n=n/b;
     } 
     while(!lista.empty()) {
-        cout<<lista.back()<<"_";
+        cout<<lista.back()<<"-";
         lista.pop_back();
     }
 }
@@ -66,10 +66,10 @@ void podstawa_tablica(int n, int b) {
         n=n/b;
     } 
     for(;i>=0;i--) {
-        cout<<tab[i]<<"_";
+        cout<<tab[i]<<"-";
     }
 }
-void taniec() {
+void taniec(int k=5) {
     string line;
     queue<string> panowie;
     queue<string> panie;
@@ -81,12 +81,14 @@ void taniec() {
         }
         else panie.push(line);
     }
-    for(int i=0;i<20;i++) {
-                if(pary.size()>=4) {
+    cout<<"\n\n";
+    while(k>0) {
+        if(pary.size()>=4) {
             cout <<"Schodzi para: " << pary.front()[0] << " i " << pary.front()[1] << "\n";
             panowie.push(pary.front()[0]);
             panie.push(pary.front()[1]);
             pary.pop();
+            k--;
         }
         if(!panowie.empty() && !panie.empty()) {
             pary.push({panowie.front(), panie.front()});
@@ -99,13 +101,13 @@ void taniec() {
 }
 
 int main(){
-    /*tab_init();
+    tab_init();
     list_init();
     cout<< "stos: ";
-    podstawa_stos(100,8);
+    podstawa_stos(128,2);
     cout<< "\nlista: ";
-    podstawa_lista(100,8);
+    podstawa_lista(128,2);
     cout<< "\ntablica: ";
-    podstawa_tablica(100,8);*/
+    podstawa_tablica(128,2);
     taniec();
 }
