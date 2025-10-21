@@ -73,12 +73,28 @@ void taniec() {
     string line;
     queue<string> panowie;
     queue<string> panie;
+    queue<array<string, 2>> pary;
     fstream file("dane.txt");
     while(getline (file,line)) {
         if(line[0] == 'M') {
             panowie.push(line);
         }
         else panie.push(line);
+    }
+    for(int i=0;i<20;i++) {
+                if(pary.size()>=4) {
+            cout <<"Schodzi para: " << pary.front()[0] << " i " << pary.front()[1] << "\n";
+            panowie.push(pary.front()[0]);
+            panie.push(pary.front()[1]);
+            pary.pop();
+        }
+        if(!panowie.empty() && !panie.empty()) {
+            pary.push({panowie.front(), panie.front()});
+            cout <<"Wchodzi para: " << pary.back()[0] << " i " << pary.back()[1] << "\n";
+            panowie.pop();
+            panie.pop();
+        }
+        cout<< "\n";
     }
 }
 
@@ -91,4 +107,5 @@ int main(){
     podstawa_lista(100,8);
     cout<< "\ntablica: ";
     podstawa_tablica(100,8);*/
+    taniec();
 }
