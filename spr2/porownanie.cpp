@@ -7,7 +7,7 @@
 #include <fstream>
 using namespace std;
 
-const long n=99999;
+const long n=999999;
 void tab_init() {
     clock_t start,end;
     double time_taken;
@@ -18,7 +18,7 @@ void tab_init() {
     }
     end=clock();
     time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-    cout << "Czas inicjalizacji " << n <<  "-elementowej tablicy: " << fixed << time_taken << setprecision(3) << " sekund" << endl;
+    cout << "Czas inicjalizacji " << n <<  "-elementowej tablicy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
 }
 void list_init() {
     clock_t start,end;
@@ -30,7 +30,7 @@ void list_init() {
     }
     end = clock();
     time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-    cout << "Czas inicjalizacji " << n <<  "-elementowej listy: " << fixed << time_taken << setprecision(3) << " sekund" << endl;
+    cout << "Czas inicjalizacji " << n << "-elementowej listy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
 }
 
 void podstawa_stos(int n,int  b) {
