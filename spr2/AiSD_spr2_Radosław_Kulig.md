@@ -24,10 +24,24 @@ Tablica to struktura o stałej długości, w której elementy są rozmieszczone 
 Lista (np. `std::list` w C++ to struktura dynamiczna, w której każdy element (węzeł) przechowuje wartość oraz wskaźniki do sąsiednich elementów. Umożliwia to szybkie wstawianie i usuwanie danych w dowolnym miejscu (`O(1)` po uzyskaniu dostępu do elementu), ale utrudnia bezpośredni dostęp do konkretnego indeksu, ponieważ wymaga przeszukiwania listy od początku (`O(n)`).
 
 
-### Implementacja algorytmu inicjalizacji tablicy
+### Implementacja algorytmu inicjalizacji i wstawiania danych do tablicy
 
 ```cpp
 const long n=999999;
+void insert_into_array(int arr[], int& size, int pos, int value) {
+    int* newArr = new int[size +1];
+    for(int i=0; i< size +1; i++) {
+        if(i < pos) {
+            newArr[i] = arr[i];
+        } else if(i == pos) {
+            newArr[i] = value;
+        } else {
+            newArr[i] = arr[i -1];
+        }
+    }
+    size++;
+    arr = newArr;  
+}
 void tab_init() {
     clock_t start,end;
     double time_taken;
@@ -39,13 +53,20 @@ void tab_init() {
     end=clock();
     time_taken = double(end - start) / double(CLOCKS_PER_SEC);
     cout << "Czas inicjalizacji " << n <<  "-elementowej tablicy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
+    int N=n;
+    start=clock();
+    insert_into_array(tab, N, n/4, 123);
+    insert_into_array(tab, N, n/3, 123);
+    insert_into_array(tab, N, n/2, 123);
+    end=clock();
+    time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+    cout << "Czas wstawiania 3 elementow do tablicy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
 }
 ```
 
-### Implementacja algorytmu inicjalizacji listy
+### Implementacja algorytmu inicjalizacji i wstawiania danych do listy
 
 ```cpp
-const long n=999999;
 void list_init() {
     clock_t start,end;
     double time_taken;
@@ -57,17 +78,31 @@ void list_init() {
     end = clock();
     time_taken = double(end - start) / double(CLOCKS_PER_SEC);
     cout << "Czas inicjalizacji " << n << "-elementowej listy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
+    list<int>::iterator it;
+    start = clock();
+    it=l.begin();
+    advance(it, n/4);
+    l.insert(it, 123);
+    it=l.begin();
+    advance(it, n/3);
+    l.insert(it, 123);
+    it=l.begin();
+    advance(it, n/2);
+    l.insert(it, 123);
+    end = clock();
+    time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+    cout << "Czas wstawiania 3 elementow do listy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
 }
 ```
 ### Wyniki
-|Rozmiar | Tablica | Lista |
+| | Tablica | Lista |
 | ------ | ------ | ------ | 
-| 999999 | 1.36 ms | 64.2 ms |
-| 99999 | 0.126 ms | 6.55 ms |
-| 9999 | 0.011 ms | 0.66 ms |
-| 999 | 0.002 ms | 0.065 ms |
+| Inicjalizacja | 1.35 ms | 62.8 ms |
+| Wstawianie danych | 7.89 ms | 4.25 ms |
 
 Inicjalizacja tablicy zajmuje około 50 krotnie mnniej czasu od inicjalizacji listy o tym samym rozmiarze.
+
+Natomiast wstawianie danych zajmuje prawie dwukrotnie mniej czasu dla listy niż dla tablicy. 
 
 ## Implementacja algorytmu wyznaczenia reprezentacji liczby w systemie liczbowym o zadanej podstawie
 
