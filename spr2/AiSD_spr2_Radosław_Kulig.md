@@ -2,7 +2,7 @@
 ## Wydział Zarządzania i Modelowania Komputerowego
 ##### Algorytmy i struktury danych
 ##### Laboratorium
-##### Struktury danych C++
+#### Struktury danych C++
 ![](https://tu.kielce.pl/wp-content/uploads/2018/03/logo_psk.jpg)
 Przygotował: Radosław Kulig
 
@@ -38,7 +38,7 @@ void tab_init() {
     }
     end=clock();
     time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-    cout << "Czas inicjalizacji " << n <<  "-elementowej tablicy: " << fixed << time_taken << setprecision(3) << " sekund" << endl;
+    cout << "Czas inicjalizacji " << n <<  "-elementowej tablicy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
 }
 ```
 
@@ -56,15 +56,16 @@ void list_init() {
     }
     end = clock();
     time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-    cout << "Czas inicjalizacji " << n <<  "-elementowej listy: " << fixed << time_taken << setprecision(3) << " sekund" << endl;
+    cout << "Czas inicjalizacji " << n << "-elementowej listy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
 }
 ```
 ### Wyniki
 |Rozmiar | Tablica | Lista |
 | ------ | ------ | ------ | 
-| 999999 | 1.389 ms | 63 ms |
-| 99999 | 0.215 ms | 7 ms |
-| 9999 | 0.011 ms | 1 ms |
+| 999999 | 1.36 ms | 64.2 ms |
+| 99999 | 0.126 ms | 6.55 ms |
+| 9999 | 0.011 ms | 0.66 ms |
+| 999 | 0.002 ms | 0.065 ms |
 
 Inicjalizacja tablicy zajmuje około 50 krotnie mnniej czasu od inicjalizacji listy o tym samym rozmiarze.
 
