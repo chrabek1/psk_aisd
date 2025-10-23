@@ -8,6 +8,21 @@
 using namespace std;
 
 const long n=999999;
+void insert_into_array(int arr[], int& size, int pos, int value) {
+    int* newArr = new int[size +1];
+    for(int i=0; i< size +1; i++) {
+        if(i < pos) {
+            newArr[i] = arr[i];
+        } else if(i == pos) {
+            newArr[i] = value;
+        } else {
+            newArr[i] = arr[i -1];
+        }
+    }
+    size++;
+    //delete[] arr;
+    arr = newArr;  
+}
 void tab_init() {
     clock_t start,end;
     double time_taken;
@@ -19,6 +34,14 @@ void tab_init() {
     end=clock();
     time_taken = double(end - start) / double(CLOCKS_PER_SEC);
     cout << "Czas inicjalizacji " << n <<  "-elementowej tablicy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
+    int N=n;
+    start=clock();
+    insert_into_array(tab, N, n/4, 123);
+    insert_into_array(tab, N, n/3, 123);
+    insert_into_array(tab, N, n/2, 123);
+    end=clock();
+    time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+    cout << "Czas wstawiania 3 elementow do tablicy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
 }
 void list_init() {
     clock_t start,end;
@@ -31,6 +54,20 @@ void list_init() {
     end = clock();
     time_taken = double(end - start) / double(CLOCKS_PER_SEC);
     cout << "Czas inicjalizacji " << n << "-elementowej listy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
+    list<int>::iterator it;
+    start = clock();
+    it=l.begin();
+    advance(it, n/4);
+    l.insert(it, 123);
+    it=l.begin();
+    advance(it, n/3);
+    l.insert(it, 123);
+    it=l.begin();
+    advance(it, n/2);
+    l.insert(it, 123);
+    end = clock();
+    time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+    cout << "Czas wstawiania 3 elementow do listy: " << setprecision(3) << time_taken*1000 << " milisekund" << endl;
 }
 
 void podstawa_stos(int n,int  b) {
@@ -45,7 +82,6 @@ void podstawa_stos(int n,int  b) {
         stos.pop();
     }
 }
-
 void podstawa_lista(int n, int b) {
     list<int> lista;
     while(n!=0) {
