@@ -67,30 +67,48 @@ $d_{32}=\frac{a_{32}}{a_{22}}=\frac{4}{3}$
 `R2 / -3 → R2`
 ##### otrzymana macierz
 ```
-1	0	1	|1
-0	1	1 |0
-0	0	-4 |-3
+1	0	 1 |  1
+0	1	 1 |  0
+0	0	-4 | -3
 ```
 Otrzymana macierz ma już postać górno-trójkątną.
 #### Krok 3
 Wyznaczamy rozwiązanie metodą podstawień wstecznych.  
 
 Z trzeciego wiersza wyznaczamy $x_3$  
-```math
-−4x_3​=−3 ⇒ x_3​​=\frac{3}{4}​
-```
+
+$$  
+-4x_3=-3 ⇒ x_3=\frac{3}{4}  
+$$  
+
 Z drugiego wiersza wyznaczamy $x_2$  
-```math
--3x_2-3x_3​=0 ⇒ -3x_2-3*\frac{3}{4}​​=0 ⇒ x_2=-\frac{3}{4}
-```
+
+$$  
+-3x_2-3x_3=0 ⇒ -3x_2-3⋅\frac{3}{4}=0 ⇒ x_2=-\frac{3}{4}  
+$$  
+
 Z pierwszego wiersza wyznaczamy $x_1$  
-```math
-x_1​+2x_2​+3x_3​=1 ⇒ x1​+2⋅-\frac{3}{4}+3⋅\frac{3}{4}=1 ⇒ x_1=\frac{1}{4}
-```
+
+$$
+x_1+2x_2+3x_3=1 ⇒ x1+2⋅-\frac{3}{4}+3⋅\frac{3}{4}=1 ⇒ x_1=\frac{1}{4}  
+$$
+
+#### Sprawdzenie przez podstawienie
+$$
+\begin{aligned}
+\frac{1}{4} + 2⋅(-\frac{3}{4})+3⋅\frac{3}{4}=1  \\
+2⋅\frac{1}{4}+(-\frac{3}{4})+3⋅\frac{3}{4}=2  \\
+3⋅\frac{1}{4}+2⋅(-\frac{3}{4})+\frac{3}{4}=0  \\
+\end{aligned}
+$$
 ### Rozwiązanie
-$x_1 = 0.25$  
-$x_2 = -0.75$  
-$x_3 = 0.75$  
+$$
+\begin{aligned}
+x_1 = \frac{1}{4} \\
+ x_2 = -\frac{3}{4} \\
+x_3 = \frac{3}{4} \\
+\end{aligned}
+$$
 ## Wnioski
 
 Przeprowadzone obliczenia potwierdziły skuteczność metody eliminacji Gaussa w rozwiązywaniu układów równań liniowych. Dzięki systematycznemu stosowaniu operacji elementarnych na wierszach macierzy możliwe było sprowadzenie układu do postaci trójkątnej górnej, a anastępnie wyznaczenie wartości niewiadomych poprzez podstawianie wsteczne.
