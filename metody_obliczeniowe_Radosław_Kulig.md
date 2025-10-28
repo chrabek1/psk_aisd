@@ -26,66 +26,71 @@ Celem niniejszego sprawozdania jest przedstawienie metody rozwiązywania układ�
 W sprawozdaniuz zaprezentowano szczegółowy przebieg obliczeń dla układu trzech równań z trzema niewiadomymi. Każdy etap został opisany krok po kroku, z wyszczególnieniem operacji elementarnych wykonywanycg na wierszach macierzy. Celem opracowania jest nie tylko uzyskania poprawnego rozwiązania, ale również zrozumienie idei metody eliminacji Gaussa oraz jej zastosowania w praktycznych problemach obliczeniowych.
 
 
-### dana macierz
+### Dany układ równań liniowych
 
+$x_1 + 2x_2 + 3x_3 = 1$  
+$2x_1 + x_2 + 3x_3 = 2$  
+$3x_1 + 2x_2 +  x_3 = 0$
+
+#### Postać macierzy rozszerzonej
 ```
- x1 + 2x2 + 3x3 = 1
-2x1 +  x2 + 3x3 = 2
-3x1 + 2x2 +  x3 = 0
+1  2  3 | 1  
+2  1  3 | 2  
+3  2  1 | 0
 ```
 
 ### Rozwiązanie
 
 #### Krok 1
-R2 - 2 R1 → R2 (multiply 1 row by 2 and subtract it from 2 row); R3 - 3 R1 → R3 (multiply 1 row by 3 and subtract it from 3 row)
+Sprowadzamy macierz do postaci górno-trójkątnej.
+W celu tym eliminujemy zmienną $x_1$ z drugiego i trzeciego wiersza, czyli od drugiego i trzeciego wiersza odejmujemy odpowiednie wielokrotności wiersza pierwszego.  
 
+$d_{21}=\frac{a_{21}}{a_{11}}=2$  
+
+$d_{31}=\frac{a_{31}}{a_{11}}=3$  
+
+`R2 - 2 R1 → R2`  
+
+`R3 - 3 R1 → R3`
+
+##### otrzymana macierz
 ```
-1	2	3	1
-0	-3	-3	0
-0	-4	-8	-3
+1	 2	 3 |  1
+0	-3	-3 |  0
+0	-4	-8 | -3
 ```
 #### Krok 2
-R2 / -3 → R2 (divide the 2 row by -3)
+Eliminujemy zmienną $x_2$ z trzeciego wiersza.  
+
+$d_{32}=\frac{a_{32}}{a_{22}}=\frac{4}{3}$  
+
+`R2 / -3 → R2`
+##### otrzymana macierz
 ```
-1	2	3	1
-0	1	1	0
-0	-4	-8	-3
+1	0	1	|1
+0	1	1 |0
+0	0	-4 |-3
 ```
+Otrzymana macierz ma już postać górno-trójkątną.
 #### Krok 3
-R1 - 2 R2 → R1 (multiply 2 row by 2 and subtract it from 1 row); R3 + 4 R2 → R3 (multiply 2 row by 4 and add it to 3 row)
-```
-1	0	1	1
-0	1	1	0
-0	0	-4	-3
-```
-#### Krok 4
+Wyznaczamy rozwiązanie metodą podstawień wstecznych.  
 
-R3 / -4 → R3 (divide the 3 row by -4)
+Z trzeciego wiersza wyznaczamy $x_3$  
+```math
+−4x_3​=−3 ⇒ x_3​​=\frac{3}{4}​
 ```
-1	0	1	1
-0	1	1	0
-0	0	1	0.75
+Z drugiego wiersza wyznaczamy $x_2$  
+```math
+-3x_2-3x_3​=0 ⇒ -3x_2-3*\frac{3}{4}​​=0 ⇒ x_2=-\frac{3}{4}
 ```
-#### Krok 5
-
-R1 - 1 R3 → R1 (multiply 3 row by 1 and subtract it from 1 row); R2 - 1 R3 → R2 (multiply 3 row by 1 and subtract it from 2 row)
-```
-1	0	0	0.25
-0	1	0	-0.75
-0	0	1	0.75
-```
-#### Podstawienie wsteczne
-```
- 0.25 + 2·(-0.75) + 3·0.75 = 0.25 - 1.5 + 2.25 = 1
-2·0.25 + (-0.75) + 3·0.75 = 0.5 - 0.75 + 2.25 = 2
-3·0.25 + 2·(-0.75) + 0.75 = 0.75 - 1.5 + 0.75 = 0
+Z pierwszego wiersza wyznaczamy $x_1$  
+```math
+x_1​+2x_2​+3x_3​=1 ⇒ x1​+2⋅-\frac{3}{4}+3⋅\frac{3}{4}=1 ⇒ x_1=\frac{1}{4}
 ```
 ### Rozwiązanie
-```
-x1 = 0.25
-x2 = -0.75
-x3 = 0.75
-```
+$x_1 = 0.25$  
+$x_2 = -0.75$  
+$x_3 = 0.75$  
 ## Wnioski
 
 Przeprowadzone obliczenia potwierdziły skuteczność metody eliminacji Gaussa w rozwiązywaniu układów równań liniowych. Dzięki systematycznemu stosowaniu operacji elementarnych na wierszach macierzy możliwe było sprowadzenie układu do postaci trójkątnej górnej, a anastępnie wyznaczenie wartości niewiadomych poprzez podstawianie wsteczne.
