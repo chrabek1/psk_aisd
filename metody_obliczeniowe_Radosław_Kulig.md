@@ -49,9 +49,9 @@ $d_{21}=\frac{a_{21}}{a_{11}}=2$
 
 $d_{31}=\frac{a_{31}}{a_{11}}=3$  
 
-`R2 - 2 R1 → R2`  
+$`R2 - 2 R1 → R2`$
 
-`R3 - 3 R1 → R3`
+$`R3 - 3 R1 → R3`$
 
 ##### otrzymana macierz
 ```
@@ -64,12 +64,12 @@ Eliminujemy zmienną $x_2$ z trzeciego wiersza.
 
 $d_{32}=\frac{a_{32}}{a_{22}}=\frac{4}{3}$  
 
-`R2 / -3 → R2`
+$`R3  -\frac{4}{3} R2 → R3`$
 ##### otrzymana macierz
 ```
-1	0	 1 |  1
-0	1	 1 |  0
-0	0	-4 | -3
+1	 2   3 |  1
+0	-3	-3 |  0
+0	 0	-4 | -3
 ```
 Otrzymana macierz ma już postać górno-trójkątną.
 #### Krok 3
