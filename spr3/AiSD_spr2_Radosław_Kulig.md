@@ -16,13 +16,25 @@ Numer grupy: L02
 ***
 
 ## Porównanie czasu wykonania algorytmów sortujących na różnych zestawach danych wejściowych
-Tablica i lista to podstawowe struktury danych służące do przechowywania zbioru elementów tego samego typu, jednak różnią się sposobem organizacji danych w pamięci oraz możliwościami operacyjnymi.
+Sortowanie stanowi jedną z fundamentalnych operacji w informatyce, wykorzystywaną m.in. w organizacji danych, wyszukiwaniu oraz optymalizacji struktur pamięciowych. Efektywność algorytmów sortujących ma kluczowe znaczenie zwłaszcza przy dużych zbiorach danych, dlatego istotne jest porównanie ich złożoności obliczeniowej oraz praktycznych czasów działania.
 
-Tablica to struktura o stałej długości, w której elementy są rozmieszczone w pamięci w sposób ciągły. Dzięki temu dostęp do elementu o danym indeksie jest bardzo szybki (operacja w czasie stałym, `O(1)`), lecz modyfikacja rozmiaru tablicy lub wstawianie elementów w środku jest kosztowne, ponieważ wymaga przesunięcia pozostałych danych. Tablice są więc efektywne, gdy rozmiar zbioru jest znany i rzadko się zmienia.
+W ramach zadania zostały przetestowane zarówno algorytmy sortowania proste, jak i algorytmy bardziej zaawansowane. Do metod prostych zalicza się:
 
-Lista (np. `std::list` w C++ to struktura dynamiczna, w której każdy element (węzeł) przechowuje wartość oraz wskaźniki do sąsiednich elementów. Umożliwia to szybkie wstawianie i usuwanie danych w dowolnym miejscu (`O(1)` po uzyskaniu dostępu do elementu), ale utrudnia bezpośredni dostęp do konkretnego indeksu, ponieważ wymaga przeszukiwania listy od początku (`O(n)`).
+- Sortowanie bąbelkowe (Bubble Sort) – algorytm polegający na wielokrotnym porównywaniu sąsiednich elementów i zamienianiu ich miejscami. Charakteryzuje się złożonością czasową O(n²) i jest jednym z najmniej efektywnych algorytmów sortowania.
 
+- Sortowanie przez wstawianie (Insertion Sort) – metoda, w której elementy są wstawiane w odpowiednie miejsce w już posortowanej części tablicy. W najlepszym przypadku osiąga O(n), jednak średnio i w najgorszym przypadku również O(n²).
 
+- Sortowanie przez wybór (Selection Sort) – algorytm polegający na wybieraniu najmniejszego elementu z nieposortowanej części zbioru i umieszczaniu go na właściwej pozycji. Jego złożoność wynosi O(n²) niezależnie od danych wejściowych.
+
+W celu analizy efektywniejszych technik uwzględniono także:
+
+- Sortowanie Shella (ShellSort) – usprawnienie sortowania przez wstawianie, polegające na porównywaniu elementów oddalonych o określony krok. Dzięki stopniowemu zmniejszaniu odstępu algorytm uzyskuje średnią złożoność lepszą od metod prostych, choć zależną od doboru sekwencji kroków.
+
+- Sortowanie przez scalanie (MergeSort) – algorytm dziel–i–zwyciężaj o gwarantowanej złożoności O(n log n). Dzieli tablicę na mniejsze części, sortuje je rekurencyjnie, a następnie scala w jedną uporządkowaną całość.
+
+- Sortowanie szybkie (QuickSort) – metoda wykorzystująca rekurencyjne dzielenie tablicy na elementy mniejsze i większe od wybranego elementu pivot. W praktyce jest jednym z najszybszych algorytmów sortowania, jednak w najgorszym przypadku osiąga O(n²), choć średnio O(n log n).
+
+W ramach eksperymentów porównano czasy wykonania powyższych algorytmów dla różnych rozmiarów danych wejściowych. Zestawienie wyników pozwala ocenić praktyczną efektywność poszczególnych metod oraz wpływ złożoności obliczeniowej na wydajność programu.
 ### Implementacja metody bąbelkowej
 
 ```cpp
@@ -177,26 +189,16 @@ bool sprawdz(long int n, int T[]) {
 ```
 ## Wyniki
 dla n=10000  
-| Sortowanie | Czas [s] |
-| ------- | ------- | 
-| Buble | 0.249 | 
-| Insertion | 0.034 | 
-| Replace | 0.063 | 
-| Shell | 0.001 | 
-| Merge | 0.001 | 
-| Quick | 0.001 |   
+| Sortowanie | N=10000 | N=50000 | N=100000 | N=500000 | N=1000000 |
+| ------- | ------- | ------- | ------- | ------ | ------ |
+| Buble | 0.249 | 6.151 |  24.887 |636.995 |  2546.317 | 
+| Insertion | 0.034 | 0.849 | 3.476 | 87.340 | 350.486 | 
+| Replace | 0.063 | 1.569 | 6.260 | 159.057 | 634.681 | 
+| Shell | 0.001 | 0.010 | 0.027 | 0.407 | 1.463 |
+| Merge | 0.001 | 0.005 | 0.010 | 0.056 | --- | 
+| Quick | 0.001 | 0.005 | 0.013 | 0.194 | 0.721 |  
 
-n=100000
-| Sortowanie | Czas [s] |
-| ------- | ------- | 
-| Buble | 24.887 | 
-| Insertion | 3.476 | 
-| Replace | 6.260 | 
-| Shell | 0.027 | 
-| Merge | 0.010 | 
-| Quick | 0.013 | 
 
-dla n=1000000
 
 ## Wnioski
 
