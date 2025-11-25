@@ -11,6 +11,7 @@ Jakub Piskulak
 Natalia Starzyk
 Maciej Krawczyk
 Piotr Łukawski
+Dominik Wójcik
 
 
 Kierunek: Inżynieria Danych
