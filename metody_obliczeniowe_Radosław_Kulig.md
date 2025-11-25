@@ -54,6 +54,7 @@ $`R2 - 2 R1 → R2`$
 
 $`R3 - 3 R1 → R3`$
 
+
 ##### otrzymana macierz
 ```
 1	 2	 3 |  1
@@ -65,14 +66,16 @@ Eliminujemy zmienną $x_2$ z trzeciego wiersza.
 
 $d_{32}=\frac{a_{32}}{a_{22}}=\frac{4}{3}$  
 
-$`R3  -\frac{4}{3} R2 → R3`$
+$`R3  -\frac{4}{3} R2 → R3`$  
+
 ##### otrzymana macierz
 ```
 1	 2   3 |  1
 0	-3	-3 |  0
 0	 0	-4 | -3
 ```
-Otrzymana macierz ma już postać górno-trójkątną.
+Otrzymana macierz ma już postać górno-trójkątną.  
+
 #### Krok 3
 Wyznaczamy rozwiązanie metodą podstawień wstecznych.  
 
@@ -101,7 +104,8 @@ $$
 2⋅\frac{1}{4}+(-\frac{3}{4})+3⋅\frac{3}{4}=2  \\
 3⋅\frac{1}{4}+2⋅(-\frac{3}{4})+\frac{3}{4}=0  \\
 \end{aligned}
-$$
+$$  
+
 ### Rozwiązanie
 $$
 \begin{aligned}
@@ -109,7 +113,8 @@ x_1 = \frac{1}{4} \\
  x_2 = -\frac{3}{4} \\
 x_3 = \frac{3}{4} \\
 \end{aligned}
-$$
+$$  
+
 ## Wnioski
 
 Przeprowadzone obliczenia potwierdziły skuteczność metody eliminacji Gaussa w rozwiązywaniu układów równań liniowych. Dzięki systematycznemu stosowaniu operacji elementarnych na wierszach macierzy możliwe było sprowadzenie układu do postaci trójkątnej górnej, a anastępnie wyznaczenie wartości niewiadomych poprzez podstawianie wsteczne.
