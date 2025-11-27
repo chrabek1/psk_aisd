@@ -5,17 +5,19 @@
 #include <ctime>
 using namespace std;
 
-const long int N = 1000000;
+const long int N = 500000;
 
 void generuj_tablice(long int n, int T[]) {
 	for (int i = 0; i < n; i++)
 		T[i] = rand() % 1000;
 }
-bool sprawdz(long int n, int T[]) {
-	for (int i = 1; i < n; i++) {
-		if (T[i] < T[i - 1]) return false;
-	}
-	return true;
+long int sprawdz(long int n, int T[]) {
+	long int licznik = 0;
+	/*for (int i = 0; i < n-1; i++) {
+		for(int j=i+1; j<n; j++)
+			if (T[j] < T[i]) licznik++;
+	}*/
+	return licznik;
 }
 void drukuj_tablice(int n, int A[]) {
 	for (int i = 0; i < n; i++) cout << A[i] << "\t";
@@ -66,7 +68,7 @@ void replaceSort(long int n, int A[]) {
 	}
 }
 void shellsort(long int n, int* tab){
-	int inner, outer, temp, h = 1;
+	long int inner, outer, temp, h = 1;
 	while (h <= n / 3)
 		h = h * 3 + 1;
 	while (h > 0) {
@@ -123,6 +125,11 @@ void MergeSort(int T[], long int p, long int k) {
 		Scalaj(T, p, mid, k);
 	}
 }
+void swap(int& a, int& b) {
+	int temp = a;
+	a = b;
+	b = temp;
+}
 void qsort(int* tab, long int left, long int right) {
 	if (left < right) {
 		long int m = left;
@@ -138,7 +145,7 @@ int main() {
 	int T[N] = {};
 	int Twzor[N] = {};
 	generuj_tablice(N, Twzor);
-	//copy(begin(Twzor), end(Twzor), begin(T));
+	cout<< "\nWskaznik inwersji: "<<(float)sprawdz(N, Twzor)/((N*(N-1))/2)<<endl;
 	cout<<"| Sortowanie | Czas [s] |\n| ------- | ------- | \n";
 	clock_t start, end;
 	double time_taken;
@@ -148,7 +155,7 @@ int main() {
 	bubleSort(N, T);
 	end = clock();
 	time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-	if (sprawdz(N, T))	cout << "| Buble | " << setprecision(3) << fixed << time_taken <<" | \n";
+	if (!sprawdz(N, T))	cout << "| Buble | " << setprecision(3) << fixed << time_taken <<" | \n";
 	else cout << "Buble: Tablica nieposortowana" << endl;
 
 	copy(Twzor, Twzor+N, T);
@@ -156,7 +163,7 @@ int main() {
 	insertionSort(N, T);
 	end = clock();
 	time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-	if (sprawdz(N, T))	cout << "| Insertion | " << setprecision(3) << fixed << time_taken <<" | \n";
+	if (!sprawdz(N, T))	cout << "| Insertion | " << setprecision(3) << fixed << time_taken <<" | \n";
 	else cout << "Insertion: Tablica nieposortowana" << endl;
 
 	copy(Twzor, Twzor+N, T);
@@ -164,7 +171,7 @@ int main() {
 	replaceSort(N, T);
 	end = clock();
 	time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-	if (sprawdz(N, T))	cout << "| Replace | " << setprecision(3) << fixed << time_taken <<" | \n";
+	if (!sprawdz(N, T))	cout << "| Replace | " << setprecision(3) << fixed << time_taken <<" | \n";
 	else cout << "Replace: Tablica nieposortowana" << endl;
 
 	copy(Twzor, Twzor+N, T);
@@ -172,7 +179,7 @@ int main() {
 	shellsort(N, T);
 	end = clock();
 	time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-	if (sprawdz(N, T))	cout << "| Shell | " << setprecision(3) << fixed << time_taken <<" | \n";
+	if (!sprawdz(N, T))	cout << "| Shell | " << setprecision(3) << fixed << time_taken <<" | \n";
 	else cout << "Shell: Tablica nieposortowana" << endl;
 
 	copy(Twzor, Twzor+N, T);
@@ -180,7 +187,7 @@ int main() {
 	MergeSort(T, 0, N-1);
 	end = clock();
 	time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-	if (sprawdz(N, T))	cout << "| Merge | " << setprecision(3) << fixed << time_taken <<" | \n";
+	if (!sprawdz(N, T))	cout << "| Merge | " << setprecision(3) << fixed << time_taken <<" | \n";
 	else cout << "Merge: Tablica nieposortowana" << endl;
 
 	copy(Twzor, Twzor+N, T);
@@ -188,7 +195,7 @@ int main() {
 	qsort(T, 0, N-1);
 	end = clock();
 	time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-	if (sprawdz(N, T))	cout << "| Quick | " << setprecision(3) << fixed << time_taken <<" | \n";
+	if (!sprawdz(N, T))	cout << "| Quick | " << setprecision(3) << fixed << time_taken <<" | \n";
 	else cout << "Quick: Tablica nieposortowana" << endl;
 
 
