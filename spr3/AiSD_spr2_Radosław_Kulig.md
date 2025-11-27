@@ -198,11 +198,13 @@ bool sprawdz(long int n, int T[]) {
 | Merge | 0.001 | 0.005 | 0.010 | 0.056 | --- | 
 | Quick | 0.001 | 0.005 | 0.013 | 0.194 | 0.721 |  
 
+#### Wykres
 
+![](https://github.com/chrabek1/psk_aisd/blob/main/spr3/wykres.png?raw=true)
 
 ## Wnioski  
 
-Przeprowadzone testy potwierdzają różnice w efektywności pomiędzy prostymi a zaawansowanymi algorytmami sortowania. Metody o złożoności O(n²), takie jak Bubble Sort, Insertion Sort i Selection Sort, okazały się nieefektywne dla dużych zbiorów danych — czas ich działania rośnie bardzo szybko wraz ze zwiększaniem liczby elementów.  
+Przeprowadzone testy potwierdzają różnice w efektywności pomiędzy prostymi a zaawansowanymi algorytmami sortowania i jest to dobrze widoczne na wykresie. Metody o złożoności O(n²), takie jak Bubble Sort, Insertion Sort i Selection Sort, okazały się nieefektywne dla dużych zbiorów danych — czas ich działania rośnie bardzo szybko wraz ze zwiększaniem liczby elementów.
  
 Znacznie lepsze wyniki osiągnęły algorytmy o złożoności O(n log n). ShellSort, MergeSort oraz QuickSort wykazały wielokrotnie krótsze czasy wykonania, a ich wyniki są stabilne i przewidywalne. W szczególności MergeSort i QuickSort okazały się najszybszą metodą dla największych zestawów danych. MergeSort zdaje się być tym najszybszym, lecz nie udało mi się wykonać algorytmu do miliona elementów ze względu na przepełnienie stosu.
  
