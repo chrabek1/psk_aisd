@@ -2,7 +2,7 @@
 ## Wydział Zarządzania i Modelowania Komputerowego
 ##### Algorytmy i struktury danych
 ##### Laboratorium
-#### Struktury danych C++
+#### Algorytmy Sortowania
 ![](https://tu.kielce.pl/wp-content/uploads/2018/03/logo_psk.jpg)
 Przygotował: Radosław Kulig
 
@@ -200,10 +200,10 @@ dla n=10000
 
 
 
-## Wnioski
+## Wnioski  
 
-Przeprowadzone eksperymenty potwierdzają, że wybór odpowiedniej struktury danych ma istotny wpływ na efektywność działania programu. Tablica, dzięki ciągłemu rozmieszczeniu elementów w pamięci, cechuje się najwyższą szybkością inicjalizacji i dostępu, co czyni ją najbardziej wydajną w operacjach o stałym rozmiarze danych. Lista, mimo większych kosztów czasowych inicjalizacji, zapewnia większą elastyczność przy dynamicznych modyfikacjach zawartości.
-
-W przypadku algorytmu konwersji liczby na system o zadanej podstawie, wszystkie implementacje – oparte na stosie, liście i tablicy – zwracają identyczne wyniki, różniąc się jedynie organizacją pamięci i sposobem odczytu danych. Implementacja algorytmu tworzenia kolejek tanecznych natomiast ilustruje praktyczne wykorzystanie struktur dynamicznych, umożliwiających równoczesne zarządzanie wieloma zbiorami danych oraz ich cykliczne przetwarzanie w sposób uporządkowany i kontrolowany.
-
-Wnioskiem końcowym jest to, że dobór struktury danych powinien być uzależniony od charakteru problemu — tablice są optymalne dla danych statycznych i dużych zbiorów o niezmiennym rozmiarze, natomiast listy i kolejki znajdują zastosowanie w zadaniach wymagających dynamicznego przydzielania, przesuwania lub rotacji elementów.
+Przeprowadzone testy potwierdzają różnice w efektywności pomiędzy prostymi a zaawansowanymi algorytmami sortowania. Metody o złożoności O(n²), takie jak Bubble Sort, Insertion Sort i Selection Sort, okazały się nieefektywne dla dużych zbiorów danych — czas ich działania rośnie bardzo szybko wraz ze zwiększaniem liczby elementów.  
+ 
+Znacznie lepsze wyniki osiągnęły algorytmy o złożoności O(n log n). ShellSort, MergeSort oraz QuickSort wykazały wielokrotnie krótsze czasy wykonania, a ich wyniki są stabilne i przewidywalne. W szczególności MergeSort i QuickSort okazały się najszybszą metodą dla największych zestawów danych. MergeSort zdaje się być tym najszybszym, lecz nie udało mi się wykonać algorytmu do miliona elementów ze względu na przepełnienie stosu.
+ 
+Podsumowując, algorytmy proste są odpowiednie jedynie dla małych zbiorów, natomiast dla większych danych zdecydowanie bardziej opłaca się stosować techniki takie jak MergeSort, ShellSort czy QuickSort. Wyniki testów są zgodne z teoretyczną złożonością badanych algorytmów.  
