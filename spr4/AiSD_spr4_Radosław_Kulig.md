@@ -2,7 +2,7 @@
 ## Wydział Zarządzania i Modelowania Komputerowego
 ##### Algorytmy i struktury danych
 ##### Laboratorium
-##### Algorytmy numeryczne
+##### Algorytmy zachłanne i dynamiczne
 ![](https://tu.kielce.pl/wp-content/uploads/2018/03/logo_psk.jpg)
 Przygotował: Radosław Kulig
 
@@ -15,143 +15,250 @@ Studia: stacjonarne
 Numer grupy: L02
 ***
 
-## Wyznaczanie miejsca zerowego funkcji metodą bisekcji
+## Wstęp teoretyczny  
 
-Metoda bisekcji ( ang. bisection method ), zwana również metodą połowienia lub wyszukiwaniem binarnym pozwala stosunkowo szybko znaleźć pierwiastek dowolnej funkcji w zadanym przedziale poszukiwań `[a,b]`. Aby można było zastosować metodę bisekcji, funkcja musi spełniać kilka warunków początkowych:
-- Funkcja musi być określona w przedziale `[a,b]`
-- Funkcja musi być ciągła w przedziale `[a,b]`
-- Na krańcach przedziału `[a,b]` funkcja musi mieć różne znaki
+### Algorytmy zachłanne
 
-Rozwiązanie znajdowane jest za pomocą kolejnych przybliżeń. Z tego powodu należy określić dokładność, z którą chcemy otrzymać pierwiastek funkcji oraz dokładność wyznaczania samej funkcji.
-W każdym przybliżeniu algorytm wyznacza środek `MID` przedziału `[XL,XR]` jako średnią arytmetyczną krańców. Następnie sprawdzane jest, czy różnica pomiędzy środkami z kolejnych iteracji jest mniejsza od założonej dokładności wyliczania pierwiastka. Jeśli tak, to algorytm kończy pracę z wynikiem w MID. 
+Algorytmy zachłanne (ang. greedy algorithms) są klasą algorytmów, które w każdym kroku podejmują lokalnie najlepszą decyzję, mając nadzieję na uzyskanie rozwiązania globalnie optymalnego. Charakteryzują się one prostą implementacją oraz niewielką złożonością obliczeniową, co czyni je atrakcyjnymi w zastosowaniach praktycznych. Decyzje podejmowane przez algorytm zachłanny są nieodwracalne i nie uwzględniają przyszłych konsekwencji, co odróżnia je od metod dynamicznych czy przeszukiwania pełnego.
 
-W przeciwnym razie punkt `MID` dzieli przedział `[XL,XR]` na dwie równe połowy: `[XL,MID]` i `[MID,XR]`. Algorytm za nowy przedział `[XL,XR]` przyjmuję tę połówkę, w której funkcja zmienia znak na krańcach i kontynuuje wyznaczanie pierwiastka funkcji.
+Algorytmy zachłanne dają rozwiązania optymalne tylko dla problemów spełniających określone własności, takie jak własność optymalnej podstruktury oraz własność wyboru zachłannego. W przypadku problemów, które nie spełniają tych warunków, algorytmy zachłanne stanowią heurystykę – rozwiązanie szybkie, lecz niekoniecznie optymalne. Przykładem takiego problemu jest klasyczny problem plecakowy, w którym algorytmy zachłanne nie gwarantują znalezienia rozwiązania optymalnego.
 
-![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/schemat_bisekcja.png?raw=true)
-## Implementacja algorytmu bisekcji
+Ze względu na swoją prostotę i efektywność, algorytmy zachłanne są często stosowane do rozwiązywania problemów decyzyjnych lub jako przybliżenie rozwiązań optymalnych w problemach optymalizacyjnych. W niniejszym sprawozdaniu przedstawiono i przeanalizowano działanie algorytmów zachłannych na przykładzie problemu plecakowego oraz porównano ich skuteczność z innymi metodami rozwiązywania tego problemu
+
+### Algorytmy dynamiczne  
+
+Programowanie dynamiczne jest techniką algorytmiczną polegającą na rozwiązywaniu problemów poprzez podział na mniejsze, powtarzające się podproblemy oraz zapamiętywanie ich wyników w celu uniknięcia wielokrotnych obliczeń. Metoda ta opiera się na dwóch kluczowych własnościach: optymalnej podstrukturze, która umożliwia złożenie rozwiązania problemu z rozwiązań podproblemów, oraz zachodzeniu podproblemów, polegającym na ich wielokrotnym występowaniu w trakcie obliczeń.  
+
+Algorytmy dynamiczne mogą być realizowane w podejściu bottom-up lub top-down z memoizacją i są szczególnie skuteczne w rozwiązywaniu problemów optymalizacyjnych, takich jak problem plecakowy czy problem cięcia pręta. W przeciwieństwie do algorytmów zachłannych, gwarantują one znalezienie rozwiązania optymalnego, jednak kosztem większej złożoności obliczeniowej i zapotrzebowania na pamięć.  
+
+## Implementacja algorytmu zachłannego do rozwiązania problemu plecakowego  
 
 ```cpp
-double vel(float c) {
-	float g = 9.81, m = 68.1, t = 10;
-	double result;
-	result = g * m / c * (1 - exp(-(c / m) * t)) - 40;
-	return result;
-}
-void bisekcja() {
-    double XL = 12, XR = 16, e = 0.1;
-    double TEMP = XL;
-    double MID = (XL + XR) / 2;
-    double epsilon = 1;
-    cout << " | " << "XL" << " | " << "XR" << " | " << "MID" << " | " << "EPS" << " | " << "\n";
-    cout << " | " << XL << " | " << XR << " | " << MID << " | " << "---" << " | " << "\n";
-    while (epsilon > e) {
- 
-        TEMP = MID;
-        if (vel(XL) * vel(MID) < 0) XR = MID; else XL = MID;
-        MID = (XL + XR) / 2;
-        epsilon = abs((MID - TEMP) / MID) * 100;
-        cout << " | " << XL << " | " << XR << " | " << MID << " | " << epsilon << " | " << "\n";
+struct przedmiot
+{
+    string nazwa;
+    int cena;
+    int waga;
+    int numer;
+};
+
+int plecak(przedmiot tab[], int n, int pojemnosc, int m = 3)
+{
+    if (m == 3)
+        sortuj_przedmioty3(tab, n);
+    else if (m == 2)
+        sortuj_przedmioty2(tab, n);
+    else if (m == 1)
+        sortuj_przedmioty1(tab, n);
+    else
+    {
+        cout << "Podaj poprawną metode sortowania: 1 | 2 | 3";
+        return 0;
     }
-    cout << "Wynik algorytmy metody bisekcji: " << MID << "\n\n";
+    // wypisz_przedmioty(tab,n);
+    int suma = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (pojemnosc >= tab[i].waga)
+        {
+            pojemnosc -= tab[i].waga;
+            suma += tab[i].cena;
+            cout << "Dodaje " << tab[i].nazwa << " do plecaka." << endl;
+        }
+        if (pojemnosc <= 0)
+            break;
+    }
+    return suma;
 }
 ```
 
-## Wyznaczanie miejsca zerowego funkcji metodą Newtona-Raphsona
-
-Metoda Newtona-Raphsona, nazywana również metodą stycznych, jest jedną z najczęściej stosowanych metod numerycznych do wyznaczania miejsc zerowych funkcji. Polega ona na iteracyjnym przybliżaniu pierwiastka poprzez wykorzystanie wartości funkcji oraz jej pochodnej w danym punkcie. W każdym kroku obliczane jest nowe przybliżenie zgodnie ze wzorem:
-
-![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/newton_wzor.png?raw=true)
-
-Proces ten powtarza się aż do osiągnięcia zadanej dokładności rozwiązania. Metoda Newtona-Raphsona charakteryzuje się zbieżnością kwadratową w pobliżu pierwiastka, co oznacza, że liczba poprawnych cyfr przybliżenia rośnie w przybliżeniu dwukrotnie z każdą iteracją. Warunkiem jej skuteczności jest jednak istnienie i niezerowość pochodnej `f′(x)` w otoczeniu pierwiastka oraz odpowiedni wybór punktu startowego `x0`, ponieważ nieodpowiednie wartości początkowe mogą prowadzić do rozbieżności iteracji.
-
-Założenia:
-
-- W przedziale `[a,b]` znajduje się dokładnie jeden pierwiastek funkcji `f`.
-- Funkcja ma różne znaki na krańcach przedziału, tj. `f(a) ⋅ f( b) < 0`.
-- Pierwsza i druga pochodna funkcji mają stały znak w tym przedziale.
-
-![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/Methode_Newton.svg.png?raw=true)
-
-## Implementacja algorytmu metody Newtona-Raphsona
+Strategie działania algorytmu zależą od wybranej metody sortowania, względem ceny, wagi, lub stosunku ceny do wagi.
 
 ```cpp
-double vel(double c) {
-    double g = 9.81, m = 68.1, t = 10;
-    double result;
-    result = g * m / c * (1 - exp(-(c / m) * t)) - 40;
-    return result;
+void sortuj_przedmioty1(przedmiot tab[], int n) // sortuje po cenie
+{
+    for (int i = 1; i < n; i++)
+    {
+        przedmiot temp;
+        if (tab[i].cena > tab[i - 1].cena)
+        {
+            temp = tab[i];
+            tab[i] = tab[i - 1];
+            tab[i - 1] = temp;
+            if (i > 1)
+                i -= 2;
+        }
+    }
 }
-double vel_der(double x) {
-    double result = exp(-0.146843 * x) * (4.16764 * pow(10, -16) * x - 668.061 * exp(0.146843 * x) + 2.83816 * pow(10, -15)) / pow(x, 2);
-    return result;
+void sortuj_przedmioty2(przedmiot tab[], int n) // sortuje po wadze
+{
+    for (int i = 1; i < n; i++)
+    {
+        przedmiot temp;
+        if (tab[i].waga < tab[i - 1].waga)
+        {
+            temp = tab[i];
+            tab[i] = tab[i - 1];
+            tab[i - 1] = temp;
+            if (i > 1)
+                i -= 2;
+        }
+    }
 }
-void newtonRaphson() {
-    double e = 0.01;
-    double x = 10;
-    double temp;
-    double der = vel_der(x);
-    cout << " | " << "x" << " | " << "|vel(x)|" << " | " << "\n";
-    cout << " | " << x << " | " << abs(vel(x)) << " | " << "\n";
-    do {
-        temp = x - vel(x) / der;
-        x = temp;
-        der = vel_der(x);
-        cout << " | " << x << " | " << abs(vel(x)) << " | " << "\n";
-    } while (abs(vel(x)) > e);
-    cout << "Wynik algorytmu metody Newtona-Raphsona: " << x << "\n";
+void sortuj_przedmioty3(przedmiot tab[], int n) // sortuje po stosunku cena/waga
+{
+    for (int i = 1; i < n; i++)
+    {
+        przedmiot temp;
+        if ((tab[i].cena / (float)tab[i].waga) > (tab[i - 1].cena / (float)tab[i - 1].waga))
+        {
+            temp = tab[i];
+            tab[i] = tab[i - 1];
+            tab[i - 1] = temp;
+            if (i > 1)
+                i -= 2;
+        }
+    }
 }
 ```
 
-## Wyniki 
+## Implementacja algorytmu zachłannego do rozwiązania problemu rozcinania pręta
 
-### Algorytm bisekcji
+Aby zastosować algorytm zachłanny dostosowuje reprezentacja danych do problemu rozcinania pręta.
+```cpp
+void czytaj_prety(int dlugosci[], int ceny[], int *n, int *p)
+{
+    ifstream plik;
+    plik.open("prety.txt");
+    plik >> *n >> *p;
+    for (int i = 0; i < *n; i++)
+    {
+        plik >> dlugosci[i];
+        plik >> ceny[i];
+    }
+    plik.close();
+}
+void prety2przedmioty(przedmiot tab[], int dlugosci[], int ceny[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        tab[i].numer = dlugosci[i];
+        tab[i].nazwa = "dl:" + to_string(dlugosci[i]);
+        tab[i].waga = dlugosci[i];
+        tab[i].cena = ceny[i];
+    }
+}
+```
+## Implementacja algorytmu dynamicznego
 
- | XL | XR | MID | EPS | 
- | ------ | ------ | ------ | ------ |
- | 12 | 16 | 14 | --- | 
- | 14 | 16 | 15 | 6.66667 | 
- | 14 | 15 | 14.5 | 3.44828 | 
- | 14.5 | 15 | 14.75 | 1.69492 | 
- | 14.75 | 15 | 14.875 | 0.840336 | 
- | 14.75 | 14.875 | 14.8125 | 0.421941 | 
- | 14.75 | 14.8125 | 14.7812 | 0.211416 | 
- | 14.7812 | 14.8125 | 14.7969 | 0.105597 | 
- | 14.7969 | 14.8125 | 14.8047 | 0.0527704 | 
- 
-##### Wynik algorytmy metody bisekcji: `14.8047`.
+```cpp
+int plecak_dynamiczny(przedmiot tab[], int n, int p)
+{
+    int P[n + 1][p + 1];
+    for (int i = 0; i <= n; i++)
+        for (int j = 0; j <= p; j++)
+            P[i][j] = 0;
+    for (int i = 1; i < n + 1; i++)
+    {
+        for (int j = 0; j < p + 1; j++)
+        {
+            if (tab[i - 1].waga > j)
+                P[i][j] = P[i - 1][j];
+            else
+                P[i][j] = P[i - 1][j] > tab[i - 1].cena + P[i - 1][j - tab[i - 1].waga] ? P[i - 1][j] : tab[i - 1].cena + P[i - 1][j - tab[i - 1].waga];
+        }
+    }
+    int w = p;
+    for (int i = n; i > 0; i--)
+    {
+        if (P[i][w] != P[i - 1][w])
+        {
+            cout << "Dodaje " << tab[i - 1].nazwa << " do plecaka." << endl;
+            w -= tab[i - 1].waga;
+        }
+    }
+    return P[n][p];
+}
+```
+### Wyniki 
 
-### Algorytm Newtona-Raphsona
+#### Dla zestawu danych 1:
 
- | x | \|vel(x)\| | 
- | ------ | ------ |
- | 10 | 11.4215 | 
- | 11.7097 | 6.83073 | 
- | 13.1116 | 3.52177 | 
- | 14.0179 | 1.57401 | 
- | 14.4809 | 0.631897 | 
- | 14.6792 | 0.23869 | 
- | 14.7562 | 0.0877069 | 
- | 14.7848 | 0.0318761 | 
- | 14.7952 | 0.0115374 | 
- | 14.799 | 0.00416963 | 
+| id | nazwa    | waga | cena |
+|----|----------|------|------|
+| 1  | gitara   | 16   | 500  |
+| 2  | PS3      | 7    | 800  |
+| 3  | PSVita   | 2    | 200  |
+| 4  | telefon  | 1    | 500  |
+| 5  | laptop   | 8    | 900  |
+| 6  | parasol  | 2    | 100  |
+| 7  | trampki  | 4    | 100  |
+| 8  | wino     | 2    | 100  |  
 
-##### Wynik algorytmu metody Newtona-Raphsona: `14.799`.
+Pojemność plecaka: 15
 
-## Wykres
+| algorytm            | strategia sortowania       | dodane przedmioty                                   | wartość plecaka |
+|---------------------|----------------------------|-----------------------------------------------------|-----------------|
+| zachłanny           | po cenie                   | laptop, PS3                                         | 1700            |
+| zachłanny           | po wadze                   | telefon, PSVita, parasol, wino, trampki             | 1000            |
+| zachłanny           | po stosunku cena/waga      | telefon, PS3, PSVita, parasol, wino                 | 1700            |
+| dynamiczny          | —                          | wino, parasol, PSVita, laptop, telefon              | 1800            |
 
-![](https://github.com/chrabek1/psk_aisd/blob/main/spr1/wykres.png?raw=true)
 
-Wielkości wartości ε na wykresie powyżej są zależne od zadanych parametrów - przedziału `[XL,XL]` w metodzie bisekcji i wartości `x` w metodzie Newtona-Raphsona. Z punktu widzenia naszego ćwiczenia istotny jest jedynie kształt linii na wykresie, który odzwierciedla tempa zbieżności porównywanych metod.
+#### Dla zestawu danych 2:
+
+| id | nazwa   | waga | cena |
+|----|---------|------|------|
+| 1  | Koszula | 7    | 75   |
+| 2  | Spodnie | 8    | 150  |
+| 3  | Sweter  | 6    | 250  |
+| 4  | Czapka  | 4    | 35   |
+| 5  | Majtki  | 3    | 10   |
+| 6  | Obuwie  | 9    | 100  |  
+
+Pojemność plecaka: 10
+
+| algorytm            | strategia sortowania        | dodane przedmioty           | wartość plecaka |
+|---------------------|-----------------------------|-----------------------------|-----------------|
+| zachłanny           | po cenie                    | Sweter, Czapka              | 285             |
+| zachłanny           | po wadze                    | Majtki, Czapka              | 45              |
+| zachłanny           | po stosunku cena/waga       | Sweter, Czapka              | 285             |
+| dynamiczny          | —                           | Czapka, Sweter              | 285             |
+
+
+
+
+#### Dla problemu rozcinania pręta:  
+Dane: 
+| długość | cena |
+|---------|------|
+| 1       | 1    |
+| 2       | 5    |
+| 3       | 8    |
+| 4       | 9    |
+| 5       | 10   |
+| 6       | 17   |
+| 7       | 17   |
+| 8       | 20   |
+| 9       | 22   |
+| 10      | 24   |  
+
+Pojemnosc plecaka: 20  
+
+| algorytm            | strategia sortowania       | dodane długości do plecaka      | wartość plecaka |
+|---------------------|----------------------------|----------------------------------|-----------------|
+| zachłanny           | po cenie                   | 10, 9, 1                         | 47              |
+| zachłanny           | po wadze                   | 1, 2, 3, 4, 5                    | 33              |
+| zachłanny           | po stosunku cena/waga      | 6, 3, 2, 8, 1                    | 51              |
+| dynamiczny          | —                          | 9, 2, 3, 6                       | 52              |
+
 
 ## Wnioski
 
-W przeprowadzonych ćwiczeniach zaimplementowano i porównano dwie metody numeryczne służące do wyznaczania miejsc zerowych funkcji: metodę bisekcji oraz metodę Newtona-Raphsona. Obie metody pozwalają skutecznie znaleźć przybliżone rozwiązanie równania nieliniowego, jednak różnią się zasadą działania, szybkością zbieżności oraz wymaganiami wobec funkcji.
+Na podstawie przeprowadzonych eksperymentów można stwierdzić, że algorytmy zachłanne cechują się prostą implementacją i niewielką złożonością obliczeniową, jednak ich skuteczność silnie zależy od zastosowanej strategii wyboru elementów. Spośród analizowanych metod sortowania jedynie strategia oparta na stosunku cena/waga daje wyniki zbliżone do rozwiązania optymalnego, podczas gdy sortowanie wyłącznie po cenie lub wadze często prowadzi do rozwiązań wyraźnie gorszych.  
 
-Metoda bisekcji charakteryzuje się dużą stabilnością i gwarancją zbieżności, pod warunkiem spełnienia założeń dotyczących ciągłości funkcji oraz zmiany znaku na krańcach przedziału. Jej główną wadą jest jednak wolne, liniowe tempo zbieżności, co powoduje konieczność wykonania większej liczby iteracji w celu osiągnięcia wymaganej dokładności.
+Potwierdzają to uzyskane wyniki eksperymentów. Dla pierwszego zestawu danych algorytm zachłanny sortujący po cenie oraz po stosunku cena/waga osiągnął wartość plecaka równą 1700, jednak rozwiązanie optymalne wyznaczone algorytmem dynamicznym wyniosło 1800. W drugim zestawie danych metoda cena/waga oraz metoda po cenie dały wartość 285, zgodną z rozwiązaniem optymalnym, natomiast sortowanie po wadze osiągnęło jedynie 45. W problemie rozcinania pręta strategia cena/waga uzyskała wartość 51, bardzo zbliżoną do optimum równego 52, podczas gdy pozostałe strategie dały znacznie słabsze wyniki (47 i 33).  
 
-Z kolei metoda Newtona-Raphsona, wykorzystująca wartości funkcji oraz jej pochodnej, cechuje się znacznie szybszym — kwadratowym — tempem zbieżności. Wymaga jednak odpowiedniego doboru punktu początkowego oraz znajomości pochodnej, gdyż w przeciwnym razie może nie zapewniać zbieżności rozwiązania.
-
-Analiza wykresu potwierdza teoretyczne właściwości obu metod. Linie przedstawiające przebieg zbieżności ukazują, że w przypadku metody bisekcji tempo zbieżności jest liniowe, natomiast dla metody Newtona-Raphsona — kwadratowe, co przekłada się na znacznie szybsze osiąganie dokładnego rozwiązania.
-Podsumowując, metoda bisekcji gwarantuje stabilność kosztem szybkości, natomiast metoda Newtona-Raphsona zapewnia większą efektywność obliczeniową przy spełnieniu bardziej restrykcyjnych warunków. Wybór odpowiedniej metody powinien zatem zależeć od charakteru analizowanej funkcji oraz oczekiwanej dokładności obliczeń.
+Uzyskane rezultaty pokazują, że algorytmy zachłanne mogą być stosowane jako szybkie metody przybliżone, jednak tylko strategia oparta na stosunku zysku do kosztu (cena/waga) ma praktyczne uzasadnienie. W zadaniach wymagających gwarancji znalezienia rozwiązania optymalnego konieczne jest jednak zastosowanie algorytmów dynamicznych, które mimo większego kosztu obliczeniowego zapewniają poprawność rozwiązania.  
 
 
