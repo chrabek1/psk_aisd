@@ -1,0 +1,7 @@
+6 10
+1 Koszula 7 75
+2 Spodnie 8 150
+3 Sweter 6 250
+4 Czapka 4 35
+5 Majtki 3 10
+6 Obuwie 9 100

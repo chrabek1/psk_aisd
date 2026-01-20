@@ -161,13 +161,16 @@ int main()
     przedmiot przedmioty[10];
     int n = 0;
     int pojemnoscPlecaka = 0;
-    czytaj_przedmioty(przedmioty, &n, &pojemnoscPlecaka);
+    //czytaj_przedmioty(przedmioty, &n, &pojemnoscPlecaka);
     int dlugosci[10];
     int ceny[10];
-    // czytaj_prety(dlugosci,ceny,&n,&pojemnoscPlecaka);
-    // prety2przedmioty(przedmioty,dlugosci,ceny,n);
+    czytaj_prety(dlugosci,ceny,&n,&pojemnoscPlecaka);
+    prety2przedmioty(przedmioty,dlugosci,ceny,n);
+    //plecak(przedmioty,n,pojemnoscPlecaka);
     cout << "Algorytm zachlanny: " << endl
-         << plecak(przedmioty, n, pojemnoscPlecaka) << endl;
+        << "po cenie" <<endl<< plecak(przedmioty, n, pojemnoscPlecaka,1) << endl
+            << "po wadze"<<endl<< plecak(przedmioty, n, pojemnoscPlecaka,2) << endl
+            << "po stosunku cena/waga"<<endl<< plecak(przedmioty, n, pojemnoscPlecaka,3) << endl;
     cout << "Algorytm dynamiczny: " << endl
          << plecak_dynamiczny(przedmioty, n, pojemnoscPlecaka);
 }
