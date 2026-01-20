@@ -1,0 +1,9 @@
+8 15
+1 gitara 16 500
+2 PS3 7 800
+3 PSVita 2 200
+4 telefon 1 500
+5 laptop 8 900
+6 parasol 2 100
+7 trampki 4 100
+8 wino 2 100
