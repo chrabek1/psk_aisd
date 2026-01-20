@@ -4,26 +4,26 @@
 ##### Laboratorium
 ##### Algorytmy zachłanne i dynamiczne
 ![](https://tu.kielce.pl/wp-content/uploads/2018/03/logo_psk.jpg)
-Przygotował: Radosław Kulig
+Przygotował: Radosław Kulig  
 
-Numer albumu: 093795
+Numer albumu: 093795  
 
-Kierunek: Inżynieria Danych
+Kierunek: Inżynieria Danych  
 
-Studia: stacjonarne
+Studia: stacjonarne  
 
-Numer grupy: L02
+Numer grupy: L02  
 ***
 
 ## Wstęp teoretyczny  
 
-### Algorytmy zachłanne
+### Algorytmy zachłanne  
 
-Algorytmy zachłanne (ang. greedy algorithms) są klasą algorytmów, które w każdym kroku podejmują lokalnie najlepszą decyzję, mając nadzieję na uzyskanie rozwiązania globalnie optymalnego. Charakteryzują się one prostą implementacją oraz niewielką złożonością obliczeniową, co czyni je atrakcyjnymi w zastosowaniach praktycznych. Decyzje podejmowane przez algorytm zachłanny są nieodwracalne i nie uwzględniają przyszłych konsekwencji, co odróżnia je od metod dynamicznych czy przeszukiwania pełnego.
+Algorytmy zachłanne (ang. greedy algorithms) są klasą algorytmów, które w każdym kroku podejmują lokalnie najlepszą decyzję, mając nadzieję na uzyskanie rozwiązania globalnie optymalnego. Charakteryzują się one prostą implementacją oraz niewielką złożonością obliczeniową, co czyni je atrakcyjnymi w zastosowaniach praktycznych. Decyzje podejmowane przez algorytm zachłanny są nieodwracalne i nie uwzględniają przyszłych konsekwencji, co odróżnia je od metod dynamicznych.  
 
-Algorytmy zachłanne dają rozwiązania optymalne tylko dla problemów spełniających określone własności, takie jak własność optymalnej podstruktury oraz własność wyboru zachłannego. W przypadku problemów, które nie spełniają tych warunków, algorytmy zachłanne stanowią heurystykę – rozwiązanie szybkie, lecz niekoniecznie optymalne. Przykładem takiego problemu jest klasyczny problem plecakowy, w którym algorytmy zachłanne nie gwarantują znalezienia rozwiązania optymalnego.
+Algorytmy zachłanne dają rozwiązania optymalne tylko dla problemów spełniających określone własności, takie jak własność optymalnej podstruktury oraz własność wyboru zachłannego. W przypadku problemów, które nie spełniają tych warunków, algorytmy zachłanne stanowią heurystykę – rozwiązanie szybkie, lecz niekoniecznie optymalne. Przykładem takiego problemu jest klasyczny problem plecakowy, w którym algorytmy zachłanne nie gwarantują znalezienia rozwiązania optymalnego.  
 
-Ze względu na swoją prostotę i efektywność, algorytmy zachłanne są często stosowane do rozwiązywania problemów decyzyjnych lub jako przybliżenie rozwiązań optymalnych w problemach optymalizacyjnych. W niniejszym sprawozdaniu przedstawiono i przeanalizowano działanie algorytmów zachłannych na przykładzie problemu plecakowego oraz porównano ich skuteczność z innymi metodami rozwiązywania tego problemu
+Ze względu na swoją prostotę i efektywność, algorytmy zachłanne są często stosowane do rozwiązywania problemów decyzyjnych lub jako przybliżenie rozwiązań optymalnych w problemach optymalizacyjnych. W niniejszym sprawozdaniu przedstawiono i przeanalizowano działanie algorytmów zachłannych na przykładzie problemu plecakowego oraz porównano ich skuteczność z innymi metodami rozwiązywania tego problemu.  
 
 ### Algorytmy dynamiczne  
 
@@ -72,7 +72,7 @@ int plecak(przedmiot tab[], int n, int pojemnosc, int m = 3)
 }
 ```
 
-Strategie działania algorytmu zależą od wybranej metody sortowania, względem ceny, wagi, lub stosunku ceny do wagi.
+Strategie działania algorytmu zależą od wybranej metody sortowania, względem ceny, wagi, lub stosunku ceny do wagi.  
 
 ```cpp
 void sortuj_przedmioty1(przedmiot tab[], int n) // sortuje po cenie
@@ -122,9 +122,9 @@ void sortuj_przedmioty3(przedmiot tab[], int n) // sortuje po stosunku cena/waga
 }
 ```
 
-## Implementacja algorytmu zachłannego do rozwiązania problemu rozcinania pręta
+## Implementacja algorytmu zachłannego do rozwiązania problemu rozcinania pręta  
 
-Aby zastosować algorytm zachłanny dostosowuje reprezentacja danych do problemu rozcinania pręta.
+Aby zastosować algorytm zachłanny dostosowuje reprezentacja danych do problemu rozcinania pręta.  
 ```cpp
 void czytaj_prety(int dlugosci[], int ceny[], int *n, int *p)
 {
@@ -149,7 +149,7 @@ void prety2przedmioty(przedmiot tab[], int dlugosci[], int ceny[], int n)
     }
 }
 ```
-## Implementacja algorytmu dynamicznego
+## Implementacja algorytmu dynamicznego  
 
 ```cpp
 int plecak_dynamiczny(przedmiot tab[], int n, int p)
@@ -180,9 +180,9 @@ int plecak_dynamiczny(przedmiot tab[], int n, int p)
     return P[n][p];
 }
 ```
-### Wyniki 
+### Wyniki  
 
-#### Dla zestawu danych 1:
+#### Dla zestawu danych 1:  
 
 | id | nazwa    | waga | cena |
 |----|----------|------|------|
@@ -195,7 +195,7 @@ int plecak_dynamiczny(przedmiot tab[], int n, int p)
 | 7  | trampki  | 4    | 100  |
 | 8  | wino     | 2    | 100  |  
 
-Pojemność plecaka: 15
+Pojemność plecaka: 15  
 
 | algorytm            | strategia sortowania       | dodane przedmioty                                   | wartość plecaka |
 |---------------------|----------------------------|-----------------------------------------------------|-----------------|
@@ -205,7 +205,7 @@ Pojemność plecaka: 15
 | dynamiczny          | —                          | wino, parasol, PSVita, laptop, telefon              | 1800            |
 
 
-#### Dla zestawu danych 2:
+#### Dla zestawu danych 2:  
 
 | id | nazwa   | waga | cena |
 |----|---------|------|------|
@@ -215,9 +215,9 @@ Pojemność plecaka: 15
 | 4  | Czapka  | 4    | 35   |
 | 5  | Majtki  | 3    | 10   |
 | 6  | Obuwie  | 9    | 100  |  
-
-Pojemność plecaka: 10
-
+  
+Pojemność plecaka: 10  
+  
 | algorytm            | strategia sortowania        | dodane przedmioty           | wartość plecaka |
 |---------------------|-----------------------------|-----------------------------|-----------------|
 | zachłanny           | po cenie                    | Sweter, Czapka              | 285             |
@@ -228,8 +228,9 @@ Pojemność plecaka: 10
 
 
 
-#### Dla problemu rozcinania pręta:  
-Dane: 
+#### Dla problemu rozcinania pręta:    
+
+Dane:  
 | długość | cena |
 |---------|------|
 | 1       | 1    |
@@ -253,12 +254,19 @@ Pojemnosc plecaka: 20
 | dynamiczny          | —                          | 9, 2, 3, 6                       | 52              |
 
 
+## Rozwiązanie ploblemu plecakowego za pomocą funkcji solver programu Excel  
+
+![excel](https://github.com/chrabek1/psk_aisd/blob/main/spr4/excel.png?raw=true)  
+![solver](https://github.com/chrabek1/psk_aisd/blob/main/spr4/solver.png?raw=true)  
+
 ## Wnioski
 
-Na podstawie przeprowadzonych eksperymentów można stwierdzić, że algorytmy zachłanne cechują się prostą implementacją i niewielką złożonością obliczeniową, jednak ich skuteczność silnie zależy od zastosowanej strategii wyboru elementów. Spośród analizowanych metod sortowania jedynie strategia oparta na stosunku cena/waga daje wyniki zbliżone do rozwiązania optymalnego, podczas gdy sortowanie wyłącznie po cenie lub wadze często prowadzi do rozwiązań wyraźnie gorszych.  
+Na podstawie przeprowadzonych eksperymentów można stwierdzić, że algorytmy zachłanne cechują się prostą implementacją oraz niewielką złożonością obliczeniową, jednak ich skuteczność w dużym stopniu zależy od przyjętej strategii wyboru elementów. Spośród analizowanych metod sortowania jedynie strategia oparta na stosunku cena/waga daje wyniki zbliżone do rozwiązania optymalnego, podczas gdy sortowanie wyłącznie po cenie lub po wadze często prowadzi do rozwiązań wyraźnie gorszych.  
 
-Potwierdzają to uzyskane wyniki eksperymentów. Dla pierwszego zestawu danych algorytm zachłanny sortujący po cenie oraz po stosunku cena/waga osiągnął wartość plecaka równą 1700, jednak rozwiązanie optymalne wyznaczone algorytmem dynamicznym wyniosło 1800. W drugim zestawie danych metoda cena/waga oraz metoda po cenie dały wartość 285, zgodną z rozwiązaniem optymalnym, natomiast sortowanie po wadze osiągnęło jedynie 45. W problemie rozcinania pręta strategia cena/waga uzyskała wartość 51, bardzo zbliżoną do optimum równego 52, podczas gdy pozostałe strategie dały znacznie słabsze wyniki (47 i 33).  
+Uzyskane wyniki potwierdzają tę obserwację. Dla pierwszego zestawu danych algorytmy zachłanne osiągnęły maksymalnie wartość 1700, podczas gdy algorytm dynamiczny wyznaczył rozwiązanie optymalne o wartości 1800. W drugim zestawie danych strategia cena/waga dała wynik zgodny z optimum, natomiast sortowanie po wadze okazało się najmniej efektywne. W problemie rozcinania pręta algorytm zachłanny oparty na stosunku cena/waga uzyskał wartość 51, bardzo zbliżoną do rozwiązania optymalnego wynoszącego 52.  
 
-Uzyskane rezultaty pokazują, że algorytmy zachłanne mogą być stosowane jako szybkie metody przybliżone, jednak tylko strategia oparta na stosunku zysku do kosztu (cena/waga) ma praktyczne uzasadnienie. W zadaniach wymagających gwarancji znalezienia rozwiązania optymalnego konieczne jest jednak zastosowanie algorytmów dynamicznych, które mimo większego kosztu obliczeniowego zapewniają poprawność rozwiązania.  
+Algorytm dynamiczny w każdym z analizowanych przypadków zagwarantował znalezienie rozwiązania optymalnego, kosztem większego zapotrzebowania na pamięć i czasu obliczeń. Takie samo rozwiązanie optymalne zostało również uzyskane przy użyciu dodatku Solver programu Excel, który pozwolił sformułować problem plecakowy jako zadanie optymalizacji liniowej. Zastosowanie Solvera potwierdziło poprawność wyników otrzymanych metodą programowania dynamicznego.  
+
+Podsumowując, algorytmy zachłanne mogą być stosowane jako szybkie metody przybliżone, jednak tylko strategia cena/waga ma praktyczne uzasadnienie. W zadaniach wymagających gwarancji optymalności najlepszym wyborem pozostają algorytmy dynamiczne lub narzędzia optymalizacyjne, takie jak Solver, które zapewniają poprawność rozwiązania.  
 
 
